@@ -1,3 +1,4 @@
+
 'use strict';
 import React, {
   AppRegistry,
@@ -94,10 +95,12 @@ var styles = {
     alignItems: 'center',
   },
   top:{
-    flex:1,
+    flex:0.1,
+    flexWrap: 'wrap',
   },
   bottom: {
     flex:1,
+    justifyContent: 'space-around',
   },
   page:{
     flex: 1,
@@ -105,7 +108,7 @@ var styles = {
     alignItems: 'center',
   },
   button: {
-    width: 250,
+    width: 300,
     height: 20,
     borderRadius: 5,
     backgroundColor: 'red',

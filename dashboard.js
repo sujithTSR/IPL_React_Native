@@ -65,12 +65,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: 300,
+    justifyContent: 'space-around',
     backgroundColor: '#F5FCFF',
-    paddingRight:20,
-    paddingBottom: 20,
-    paddingTop: 20,
     shadowColor: '#ffff',
     shadowOpacity: 1.2,
     shadowRadius: 2,
@@ -78,18 +75,23 @@ const styles = StyleSheet.create({
   },
   first:{
     flex: 1,
+    justifyContent: 'space-around',
     flexDirection: 'row',
   },
   second:{
     flex: 1,
+    justifyContent: 'space-around',
     flexDirection: 'row',
+    marginLeft:5,
   },
   third:{
     flex: 1,
+    justifyContent: 'space-around',
     flexDirection: 'row',
   },
   fourth:{
     flex: 1,
+    justifyContent: 'space-around',
     flexDirection: 'row',
   },
 
