@@ -8,81 +8,46 @@ import React, {
   TouchableHighlight,
   AlertIOS,
   Dimensions,
+  Navigator,
 } from 'react-native';
-
-var {SKNavigator} = require('react-native-sk-navigator');
-var Dashboard = require('./dashboard.js')
-var Page = React.createClass({
-  render() {
-    return (
-      <View style={styles.page}>
-        {/* Second page render */}
-
-        <TouchableHighlight
-          style={[styles.button, styles.goback]}
-          underlayColor='#c8c7cc'
-          onPress={() => this.props.navigator.pop()}
-        >
-          <Text>go back</Text>
-        </TouchableHighlight>
-      </View>
-    );
-  }
+var Dashboard= require('./dashboard.js');
+var Sample = require ('./sample.js');
+var SCREEN_WIDTH =require('Dimensions').get('window').width;
+var BaseConfig = Navigator.SceneConfigs.FloatFromRight;
+var CustomLeftToRightGesture = Object.assign({}, BaseConfig.gestures.pop, {
+  snapVelocity: 8,
+  edgeHitWidth: SCREEN_WIDTH,
 });
-
-var Home = React.createClass({
-  showPage(type){
-      this.props.navigator.push({
-      type: type, // simple
-      component: Page,
-      passProps: {
-        navigator: this.props.navigator,
-        type: type
-      },
-    });
-  },
-
-  renderButton(type, i){
-    return (
-        <TouchableHighlight
-        key={i}  // First Button
-        style={styles.button}
-        underlayColor='#c8c7cc'
-        onPress={() => this.showPage(type)}
-        >
-      <Text>{type}</Text>
-      </TouchableHighlight>
-    )
-  },
-
-  render() {
-    var types = ['simple'];
-    return (
-      <View style={styles.container}>
-        <View style={styles.top}>
-          {types.map(this.renderButton)}
-        </View>
-        <View style={styles.bottom}>
-          <Dashboard />
-        </View>
-
-      </View>
-    );
+var CustomSceneConfig = Object.assign({}, BaseConfig, {
+  // A very tighly wound spring will make this transition fast
+  springTension: 100,
+  springFriction: 1,
+  // Use our custom gesture defined above
+  gestures: {
+    pop: CustomLeftToRightGesture,
   }
 });
 
 
 var test = React.createClass({
+  _renderScene(route,navigator){
+    if(route.id === 1){
+      return <Dashboard navigator={navigator}/>;
+    }
+    else if(route.id === 2){
+      return <Sample navigator={navigator} /> ;
+    }
+  },
+  _configureScene(route){
+    return CustomSceneConfig;
+  },
   render() {
     return (
-      <SKNavigator
-        initialRoute={{
-           component: Home,
-           title: 'Home',
-           type: 'none',
-           passProps: {
-           }
-         }}/>
+      <Navigator initialRoute={{id:1}}
+        renderScene={this._renderScene}
+        configureScene={this._configureScene}
+      />
+
     );
   }
 });
@@ -92,7 +57,6 @@ var styles = {
     flex: 1,
     backgroundColor: '#FFF',
     justifyContent: 'space-around',
-    alignItems: 'center',
   },
   top:{
     flex:0.1,

@@ -1,4 +1,8 @@
+
 'use strict';
+var _ = require('lodash');
+var Sample = require('./sample.js');
+
 import React, {
   AppRegistry,
   StyleSheet,
@@ -9,63 +13,87 @@ import React, {
   View,
   TouchableHighlight,
 } from 'react-native';
-var _ = require('lodash');
-class Dashboard extends React.Component{
 
-
+var Dashboard = React.createClass({
+  _handlePress() {
+    this.props.navigator.push({id: 2});
+  },
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.first}>
           <View style={styles.leftContainer}>
+            <TouchableHighlight onPress={this._handlePress}>
             <Image
               style={styles.thumbnail}
               source={require('./ball.png')}
             />
+            </TouchableHighlight>
+            <Text>
+              Played
+            </Text>
+
           </View>
 
           <View style={styles.rightContainer}>
+            <TouchableHighlight onPress={this._handlePress}>
             <Image
               style={styles.thumbnail}
               source={require('./bat.png')}
             />
+            </TouchableHighlight>
+            <Text>
+              Remaining
+            </Text>
           </View>
         </View>
         <View style={styles.second}>
           <View style={styles.leftContainer}>
+            <TouchableHighlight onPress={this._handlePress}>
             <Image
               style={styles.thumbnail}
               source={require('./win.png')}
             />
+            </TouchableHighlight>
+            <Text>
+              Won
+            </Text>
           </View>
 
           <View style={styles.rightContainer}>
+            <TouchableHighlight onPress={this._handlePress}>
             <Image
               style={styles.thumbnail}
               source={require('./lost.png')}
             />
+            </TouchableHighlight>
+            <Text>
+              Lost
+            </Text>
           </View>
         </View>
         <View style={styles.third}>
-          <Text>
-          Credits
-          </Text>
+          <TouchableHighlight onPress={this._handlePress}>
+            <Text>
+              Credits
+            </Text>
+          </TouchableHighlight>
         </View>
         <View style={styles.fourth}>
-          <Text>
-          PLACE THE BET
-          </Text>
+          <TouchableHighlight onPress={this._handlePress}>
+            <Text>
+            PLACE THE BET
+            </Text>
+          </TouchableHighlight>
         </View>
-
       </View>
     );
   }
-}
+});
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    width: 300,
     justifyContent: 'space-around',
     backgroundColor: '#F5FCFF',
     shadowColor: '#ffff',
@@ -75,22 +103,26 @@ const styles = StyleSheet.create({
   },
   first:{
     flex: 1,
+    alignItems:'center',
     justifyContent: 'space-around',
     flexDirection: 'row',
   },
   second:{
     flex: 1,
     justifyContent: 'space-around',
+    alignItems:'center',
     flexDirection: 'row',
     marginLeft:5,
   },
   third:{
     flex: 1,
+    alignItems:'center',
     justifyContent: 'space-around',
     flexDirection: 'row',
   },
   fourth:{
     flex: 1,
+    alignItems:'center',
     justifyContent: 'space-around',
     flexDirection: 'row',
   },
@@ -149,7 +181,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF'
   }
 });
-
-
 
 module.exports = Dashboard;
