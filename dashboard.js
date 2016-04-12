@@ -2,25 +2,22 @@
 'use strict';
 var _ = require('lodash');
 var Sample = require('./sample.js');
-
-import React, {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  Component,
-  Dimensions,
-  Image,
-  ListView,
-  View,
-  TouchableHighlight,
-} from 'react-native';
-
 var {height, width} = Dimensions.get('window');
 var height_box =7*height/23;
 var width_box= 6*width/10;
 var height_line=2*height/27;
 var width_line=8*width/10;
 
+import React, {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  Component,
+  Image,
+  ListView,
+  View,
+  TouchableHighlight,
+} from 'react-native';
 
 var Dashboard = React.createClass({
   _handlePress() {
