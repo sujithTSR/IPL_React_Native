@@ -28,7 +28,6 @@ var CustomSceneConfig = Object.assign({}, BaseConfig, {
   }
 });
 
-
 var test = React.createClass({
   _renderScene(route,navigator){
     if(route.id === 1){
@@ -47,7 +46,6 @@ var test = React.createClass({
         renderScene={this._renderScene}
         configureScene={this._configureScene}
       />
-
     );
   }
 });

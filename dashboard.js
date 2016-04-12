@@ -8,11 +8,19 @@ import React, {
   StyleSheet,
   Text,
   Component,
+  Dimensions,
   Image,
   ListView,
   View,
   TouchableHighlight,
 } from 'react-native';
+
+var {height, width} = Dimensions.get('window');
+var height_box =7*height/23;
+var width_box= 6*width/10;
+var height_line=2*height/27;
+var width_line=8*width/10;
+
 
 var Dashboard = React.createClass({
   _handlePress() {
@@ -21,9 +29,20 @@ var Dashboard = React.createClass({
   render() {
     return (
       <View style={styles.container}>
+        <View style={styles.prefirst}>
+          <TouchableHighlight onPress={this._handlePress} style={styles.navibutton}>
+            <Image
+              style={styles.naviimage}
+              source={require('./naviIcon.png')}
+            />
+          </TouchableHighlight>
+          <Text style={styles.maintext}>
+            User Details
+          </Text>
+        </View>
         <View style={styles.first}>
           <View style={styles.leftContainer}>
-            <TouchableHighlight onPress={this._handlePress}>
+            <TouchableHighlight onPress={this._handlePress} style={{flex:1, height:{height_box}, width: {width_box}, backgroundColor:'e8ffb2'}}>
             <Image
               style={styles.thumbnail}
               source={require('./ball.png')}
@@ -32,11 +51,10 @@ var Dashboard = React.createClass({
             <Text>
               Played
             </Text>
-
           </View>
 
           <View style={styles.rightContainer}>
-            <TouchableHighlight onPress={this._handlePress}>
+            <TouchableHighlight onPress={this._handlePress} style={{flex:1, height: {height_box}, width: {width_box}, backgroundColor:'e8ffb2'}}>
             <Image
               style={styles.thumbnail}
               source={require('./bat.png')}
@@ -49,7 +67,7 @@ var Dashboard = React.createClass({
         </View>
         <View style={styles.second}>
           <View style={styles.leftContainer}>
-            <TouchableHighlight onPress={this._handlePress}>
+            <TouchableHighlight onPress={this._handlePress} style={{flex:1, height: {height_box}, width: {width_box}, backgroundColor:'e8ffb2'}}>
             <Image
               style={styles.thumbnail}
               source={require('./win.png')}
@@ -61,7 +79,7 @@ var Dashboard = React.createClass({
           </View>
 
           <View style={styles.rightContainer}>
-            <TouchableHighlight onPress={this._handlePress}>
+            <TouchableHighlight onPress={this._handlePress} style={{flex:1,height: {height_box}, width: {width_box}, backgroundColor:'e8ffb2'}}>
             <Image
               style={styles.thumbnail}
               source={require('./lost.png')}
@@ -73,14 +91,14 @@ var Dashboard = React.createClass({
           </View>
         </View>
         <View style={styles.third}>
-          <TouchableHighlight onPress={this._handlePress}>
+          <TouchableHighlight onPress={this._handlePress} style={{flex:1, height: {height_line}, width: {width_line}, backgroundColor:'e8ffb2'}}>
             <Text>
               Credits
             </Text>
           </TouchableHighlight>
         </View>
         <View style={styles.fourth}>
-          <TouchableHighlight onPress={this._handlePress}>
+          <TouchableHighlight onPress={this._handlePress} style={{flex:1, height: {height_line}, width: {width_line}, backgroundColor:'e8ffb2'}}>
             <Text>
             PLACE THE BET
             </Text>
@@ -99,7 +117,11 @@ const styles = StyleSheet.create({
     shadowColor: '#ffff',
     shadowOpacity: 1.2,
     shadowRadius: 2,
-
+    paddingTop:10,
+  },
+  prefirst:{
+    flex: 0.2,
+    flexDirection:'row',
   },
   first:{
     flex: 1,
@@ -126,7 +148,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     flexDirection: 'row',
   },
-
   leftContainer:{
     padding:20,
     flex:1,
@@ -135,23 +156,20 @@ const styles = StyleSheet.create({
     padding: 20,
     flex: 1,
   },
-  starcontainer: {
+  navibutton:{
     flex:1,
-    padding:7,
-    flexDirection: 'row'
+    paddingLeft:10,
+    width: 25,
+    height: 25
   },
-  thumbnail: {
-    width: 100,
-    height: 100,
+  naviimage:{
+    width: 24,
+    height: 24,
   },
-  star:{
-    width: 10,
-    height: 10
-  },
-  play:{
-    width: 20,
-    height: 20,
-    marginLeft: 160
+  maintext:{
+    flex: 5.5,
+    fontSize: 18,
+    textAlign: 'center',
   },
   title: {
     fontSize: 18,
@@ -159,27 +177,15 @@ const styles = StyleSheet.create({
     textAlign: 'left'
 
   },
+  thumbnail:{
+    height: 45,
+    width: 45,
+  },
   year: {
     marginLeft:8,
     textAlign: 'left'
   },
 
-  separator: {
-    height: 1,
-    backgroundColor: '#CCC',
-    shadowColor: '#FFFF',
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-    shadowOffset:{
-      height:1,
-      width:0
-    }
-
-    },
-  listView: {
-    paddingTop: 10,
-    backgroundColor: '#F5FCFF'
-  }
 });
 
 module.exports = Dashboard;
