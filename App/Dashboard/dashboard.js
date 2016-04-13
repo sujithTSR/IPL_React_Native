@@ -2,10 +2,10 @@
 'use strict';
 var _ = require('lodash');
 var {height, width} = Dimensions.get('window');
-var height_box = 50;//7*height/23;
-var width_box=  50; //6*width/10;
-var height_line= 50; //2*height/27;
-var width_line=  50;//8*width/10;
+var height_box = 7*height/23;
+var width_box=  6*width/10;
+var height_line= 2*height/27;
+var width_line=  8*width/10;
 
 import React, {
   AppRegistry,
@@ -43,7 +43,7 @@ var Dashboard = React.createClass({
         </View>
         <View style={styles.first}>
           <View style={styles.leftContainer}>
-            <TouchableHighlight onPress={this._handlePress} style={{flex:1, height:50, width: 50, backgroundColor:'e8ffb2'}}>
+            <TouchableHighlight onPress={this._handlePress} style={{flex:1, height: height_box, width: width_box, backgroundColor:'e9eaed'}}>
             <Image
               style={styles.thumbnail}
               source={require('./../../Icons/dashboard/ball.png')}
@@ -55,7 +55,7 @@ var Dashboard = React.createClass({
           </View>
 
           <View style={styles.rightContainer}>
-            <TouchableHighlight onPress={this._handlePress} style={{flex:1, height: 50, width: 50, backgroundColor:'e8ffb2'}}>
+            <TouchableHighlight onPress={this._handlePress} style={{flex:1, height: height_box, width: width_box, backgroundColor:'e9eaed'}}>
             <Image
               style={styles.thumbnail}
               source={require('./../../Icons/dashboard/bat.png')}
@@ -68,7 +68,7 @@ var Dashboard = React.createClass({
         </View>
         <View style={styles.second}>
           <View style={styles.leftContainer}>
-            <TouchableHighlight onPress={this._handlePress} style={{flex:1, height: 50, width: 50, backgroundColor:'e8ffb2'}}>
+            <TouchableHighlight onPress={this._handlePress} style={{flex:1, height: height_box, width: width_box, backgroundColor:'e9eaed'}}>
             <Image
               style={styles.thumbnail}
               source={require('./../../Icons/dashboard/win.png')}
@@ -80,7 +80,7 @@ var Dashboard = React.createClass({
           </View>
 
           <View style={styles.rightContainer}>
-            <TouchableHighlight onPress={this._handlePress} style={{flex:1,height: 50, width: 50, backgroundColor:'e8ffb2'}}>
+            <TouchableHighlight onPress={this._handlePress} style={{flex:1,height: height_box, width: width_box, backgroundColor:'e9eaed'}}>
             <Image
               style={styles.thumbnail}
               source={require('./../../Icons/dashboard/lost.png')}
@@ -92,14 +92,14 @@ var Dashboard = React.createClass({
           </View>
         </View>
         <View style={styles.third}>
-          <TouchableHighlight onPress={this._handlePress} style={{flex:1, height: 50, width: 50, backgroundColor:'e8ffb2'}}>
+          <TouchableHighlight onPress={this._handlePress} style={{flex:1, height: height_line, width: width_line, backgroundColor:'e9eaed'}}>
             <Text>
               Credits
             </Text>
           </TouchableHighlight>
         </View>
         <View style={styles.fourth}>
-          <TouchableHighlight onPress={this._handlePress} style={{flex:1, height: 50, width: 50, backgroundColor:'e8ffb2'}}>
+          <TouchableHighlight onPress={this._handlePress} style={{flex:1, height: height_line, width: width_line, backgroundColor:'e9eaed'}}>
             <Text>
             PLACE THE BET
             </Text>
@@ -114,8 +114,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'space-around',
-    backgroundColor: '#F5FCFF',
-    shadowColor: '#ffff',
+    backgroundColor: '#e9eaed',
+    shadowColor: '#F5FCFF',
     shadowOpacity: 1.2,
     shadowRadius: 2,
     paddingTop:10,
@@ -123,6 +123,7 @@ const styles = StyleSheet.create({
   prefirst:{
     flex: 0.2,
     flexDirection:'row',
+
   },
   first:{
     flex: 1,
@@ -160,12 +161,12 @@ const styles = StyleSheet.create({
   navibutton:{
     flex:1,
     paddingLeft:10,
-    width: 25,
-    height: 25
+    width: 30,
+    height: 30
   },
   naviimage:{
-    width: 24,
-    height: 24,
+    width: 29,
+    height: 29,
   },
   maintext:{
     flex: 5.5,
