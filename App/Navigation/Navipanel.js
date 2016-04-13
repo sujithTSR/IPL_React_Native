@@ -1,0 +1,121 @@
+'use strict';
+
+var React = require('react-native');
+var {
+  AppRegistry,
+  StyleSheet,
+  Component,
+  Text,
+  View,
+  Navigator,
+  TouchableOpacity,
+  TouchableHighlight,
+  Dimensions,
+  Image
+} = React;
+var {height, width} = Dimensions.get('window');
+class NaviPanel extends Component {
+  render() {
+    return (
+      <Navigator
+          renderScene={this.renderScene.bind(this)}
+           />
+    );
+  }
+  renderScene(route, navigator) {
+      return (
+        <View style={styles.container}>
+        <View style={styles.profilepic}>
+        <Image source={require('./images/navicover.jpg')} style={styles.largeimage}>
+          <Image source={require('./images/yuvaraj.jpg')} style={styles.image}/>
+          <Text style={styles.name}>Yuvaraj</Text>
+        </Image>
+        </View>
+        <View style={styles.buttonstyle}>
+          <TouchableOpacity
+              onPress={this.gotoNext.bind(this)}>
+            <Text style={styles.text}>Matches</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.secondcontainer}>
+        <View style={styles.buttonstyle}>
+          <TouchableOpacity
+              onPress={this.gotoNext.bind(this)}>
+            <Text style={styles.text}>Leader Board</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.buttonstyle}>
+          <TouchableOpacity
+              onPress={this.gotoNext.bind(this)}>
+            <Text style={styles.text}>Users</Text>
+          </TouchableOpacity>
+        </View>
+        </View>
+        </View>
+      );
+    }
+    gotoNext() {
+      this.props.navigator.push({
+        id: 2,
+      });
+    }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#ffffff',
+    borderBottomRightRadius:0,
+    borderTopRightRadius:0,
+  },
+  secondcontainer:{
+    flex:1,
+    borderBottomRightRadius:0,
+    borderTopRightRadius:0,
+  },
+  name:{
+    paddingTop:250,
+    alignSelf:'center',
+    fontSize:30,
+    opacity:1,
+    color:'#ffffff',
+  },
+  profilepic:{
+    height:300,
+    width:width,
+  },
+  largeimage:{
+    height:300,
+    width:width,
+    opacity:0.8,
+  },
+  image: {
+    height: 150,
+    width: 150,
+    borderRadius:100,
+    borderWidth:0,
+    alignSelf:'center',
+    marginTop:50,
+    opacity:1,
+  },
+  buttonstyle:{
+    width:300,
+    height:60,
+    backgroundColor:'#333333',
+    borderRadius:200,
+    borderColor:'#000000',
+    borderStyle:'dashed',
+    elevation:20,
+    paddingTop:10,
+    marginTop:20,
+    alignSelf:'center'
+  },
+  text:{
+    color:'#ffffff',
+    fontSize:25,
+    textAlign:'center',
+    paddingTop:10
+  }
+});
+
+module.exports=Navipanel;

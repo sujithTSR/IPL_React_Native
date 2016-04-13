@@ -3,10 +3,10 @@
 var _ = require('lodash');
 var Sample = require('./sample.js');
 var {height, width} = Dimensions.get('window');
-var height_box =7*height/23;
-var width_box= 6*width/10;
-var height_line=2*height/27;
-var width_line=8*width/10;
+var height_box = 50;//7*height/23;
+var width_box=  50; //6*width/10;
+var height_line= 50; //2*height/27;
+var width_line=  50;//8*width/10;
 
 import React, {
   AppRegistry,
@@ -23,11 +23,14 @@ var Dashboard = React.createClass({
   _handlePress() {
     this.props.navigator.push({id: 2});
   },
+  _navi(){
+    this.props.navigator.push({id: 3});
+  },
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.prefirst}>
-          <TouchableHighlight onPress={this._handlePress} style={styles.navibutton}>
+          <TouchableHighlight onPress={this._navi} style={styles.navibutton}>
             <Image
               style={styles.naviimage}
               source={require('./naviIcon.png')}

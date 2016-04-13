@@ -10,7 +10,9 @@ import React, {
   Dimensions,
   Navigator,
 } from 'react-native';
-var Dashboard= require('./dashboard.js');
+
+var Navipanel=require('./App/Navigation/Navianel');
+var Dashboard= require('./App/Dashboard/dashboard.js');
 var Sample = require ('./sample.js');
 var SCREEN_WIDTH =require('Dimensions').get('window').width;
 var BaseConfig = Navigator.SceneConfigs.FloatFromRight;
@@ -35,6 +37,9 @@ var test = React.createClass({
     }
     else if(route.id === 2){
       return <Sample navigator={navigator} /> ;
+    }
+    else if(route.id === 3){
+      return <Navipanel navigator={navigator} /> ;
     }
   },
   _configureScene(route){
