@@ -14,7 +14,7 @@ var {
   Image
 } = React;
 var {height, width} = Dimensions.get('window');
-class NaviPanel extends Component {
+class Navipanel extends Component {
   render() {
     return (
       <Navigator
@@ -26,8 +26,8 @@ class NaviPanel extends Component {
       return (
         <View style={styles.container}>
         <View style={styles.profilepic}>
-        <Image source={require('./images/navicover.jpg')} style={styles.largeimage}>
-          <Image source={require('./images/yuvaraj.jpg')} style={styles.image}/>
+        <Image source={require('./../../images/navicover.jpg')} style={styles.largeimage}>
+          <Image source={require('./../../images/yuvaraj.jpg')} style={styles.image}/>
           <Text style={styles.name}>Yuvaraj</Text>
         </Image>
         </View>
@@ -55,9 +55,7 @@ class NaviPanel extends Component {
       );
     }
     gotoNext() {
-      this.props.navigator.push({
-        id: 2,
-      });
+      this.props.navigator.push({ id: 2 });
     }
 }
 

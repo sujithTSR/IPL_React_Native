@@ -1,7 +1,6 @@
 
 'use strict';
 var _ = require('lodash');
-var Sample = require('./sample.js');
 var {height, width} = Dimensions.get('window');
 var height_box = 50;//7*height/23;
 var width_box=  50; //6*width/10;
@@ -12,6 +11,7 @@ import React, {
   AppRegistry,
   StyleSheet,
   Text,
+  Dimensions,
   Component,
   Image,
   ListView,
@@ -26,6 +26,7 @@ var Dashboard = React.createClass({
   _navi(){
     this.props.navigator.push({id: 3});
   },
+
   render() {
     return (
       <View style={styles.container}>
@@ -33,7 +34,7 @@ var Dashboard = React.createClass({
           <TouchableHighlight onPress={this._navi} style={styles.navibutton}>
             <Image
               style={styles.naviimage}
-              source={require('./naviIcon.png')}
+              source={require('./../../Icons/naviIcon.png')}
             />
           </TouchableHighlight>
           <Text style={styles.maintext}>
@@ -42,10 +43,10 @@ var Dashboard = React.createClass({
         </View>
         <View style={styles.first}>
           <View style={styles.leftContainer}>
-            <TouchableHighlight onPress={this._handlePress} style={{flex:1, height:{height_box}, width: {width_box}, backgroundColor:'e8ffb2'}}>
+            <TouchableHighlight onPress={this._handlePress} style={{flex:1, height:50, width: 50, backgroundColor:'e8ffb2'}}>
             <Image
               style={styles.thumbnail}
-              source={require('./ball.png')}
+              source={require('./../../Icons/dashboard/ball.png')}
             />
             </TouchableHighlight>
             <Text>
@@ -54,10 +55,10 @@ var Dashboard = React.createClass({
           </View>
 
           <View style={styles.rightContainer}>
-            <TouchableHighlight onPress={this._handlePress} style={{flex:1, height: {height_box}, width: {width_box}, backgroundColor:'e8ffb2'}}>
+            <TouchableHighlight onPress={this._handlePress} style={{flex:1, height: 50, width: 50, backgroundColor:'e8ffb2'}}>
             <Image
               style={styles.thumbnail}
-              source={require('./bat.png')}
+              source={require('./../../Icons/dashboard/bat.png')}
             />
             </TouchableHighlight>
             <Text>
@@ -67,10 +68,10 @@ var Dashboard = React.createClass({
         </View>
         <View style={styles.second}>
           <View style={styles.leftContainer}>
-            <TouchableHighlight onPress={this._handlePress} style={{flex:1, height: {height_box}, width: {width_box}, backgroundColor:'e8ffb2'}}>
+            <TouchableHighlight onPress={this._handlePress} style={{flex:1, height: 50, width: 50, backgroundColor:'e8ffb2'}}>
             <Image
               style={styles.thumbnail}
-              source={require('./win.png')}
+              source={require('./../../Icons/dashboard/win.png')}
             />
             </TouchableHighlight>
             <Text>
@@ -79,10 +80,10 @@ var Dashboard = React.createClass({
           </View>
 
           <View style={styles.rightContainer}>
-            <TouchableHighlight onPress={this._handlePress} style={{flex:1,height: {height_box}, width: {width_box}, backgroundColor:'e8ffb2'}}>
+            <TouchableHighlight onPress={this._handlePress} style={{flex:1,height: 50, width: 50, backgroundColor:'e8ffb2'}}>
             <Image
               style={styles.thumbnail}
-              source={require('./lost.png')}
+              source={require('./../../Icons/dashboard/lost.png')}
             />
             </TouchableHighlight>
             <Text>
@@ -91,14 +92,14 @@ var Dashboard = React.createClass({
           </View>
         </View>
         <View style={styles.third}>
-          <TouchableHighlight onPress={this._handlePress} style={{flex:1, height: {height_line}, width: {width_line}, backgroundColor:'e8ffb2'}}>
+          <TouchableHighlight onPress={this._handlePress} style={{flex:1, height: 50, width: 50, backgroundColor:'e8ffb2'}}>
             <Text>
               Credits
             </Text>
           </TouchableHighlight>
         </View>
         <View style={styles.fourth}>
-          <TouchableHighlight onPress={this._handlePress} style={{flex:1, height: {height_line}, width: {width_line}, backgroundColor:'e8ffb2'}}>
+          <TouchableHighlight onPress={this._handlePress} style={{flex:1, height: 50, width: 50, backgroundColor:'e8ffb2'}}>
             <Text>
             PLACE THE BET
             </Text>

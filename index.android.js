@@ -1,4 +1,5 @@
 
+
 'use strict';
 import React, {
   AppRegistry,
@@ -11,9 +12,9 @@ import React, {
   Navigator,
 } from 'react-native';
 
-var Navipanel=require('./App/Navigation/Navianel');
+var Navipanel=require('./App/Navigation/Navipanel.js');
 var Dashboard= require('./App/Dashboard/dashboard.js');
-var Sample = require ('./sample.js');
+var Sample= require('./App/Navigation/sample.js');
 var SCREEN_WIDTH =require('Dimensions').get('window').width;
 var BaseConfig = Navigator.SceneConfigs.FloatFromRight;
 var CustomLeftToRightGesture = Object.assign({}, BaseConfig.gestures.pop, {
