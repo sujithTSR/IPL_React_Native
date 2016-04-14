@@ -45,13 +45,13 @@ class Navipanel extends Component {
               </View>
               <View style={styles.buttonstyle}>
                 <TouchableOpacity
-                    onPress={this.gotoNext.bind(this)}>
-                  <Text style={styles.text}>Leader Board</Text>
+                    onPress={this.gotoDashboard.bind(this)}>
+                  <Text style={styles.text}>Dashboard</Text>
                 </TouchableOpacity>
               </View>
               <View style={styles.buttonstyle}>
                 <TouchableOpacity
-                    onPress={this.gotoNext.bind(this)}>
+                    onPress={this.gotoUsers.bind(this)}>
                   <Text style={styles.text}>Users</Text>
                 </TouchableOpacity>
               </View>
@@ -62,7 +62,12 @@ class Navipanel extends Component {
     gotoNext() {
       this.props.navigator.push({ id: 2 });
     }
-
+    gotoUsers(){
+      this.props.navigator.push({ id : 5});
+    }
+    gotoDashboard(){
+      this.props.navigator.push({ id : 1});
+    }
     gotoMatches(){
       this.props.navigator.push({ id: 4 });
     }

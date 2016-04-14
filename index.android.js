@@ -16,6 +16,7 @@ var Navipanel=require('./App/Navigation/Navipanel.js');
 var Dashboard= require('./App/Dashboard/dashboard.js');
 var Sample= require('./App/Navigation/sample.js');
 var Matches = require('./App/Components/Matches.js');
+var Users = require('./App/Components/Users.js');
 
 var SCREEN_WIDTH =require('Dimensions').get('window').width;
 var BaseConfig = Navigator.SceneConfigs.FloatFromRight;
@@ -47,6 +48,10 @@ var test = React.createClass({
     else if(route.id === 4){
       return <Matches navigator={navigator} /> ;
     }
+    else if(route.id === 5){
+      return <Users navigator={navigator} />
+    }
+
   },
   _configureScene(route){
     return CustomSceneConfig;

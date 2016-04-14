@@ -12,6 +12,7 @@ import React, {
   TouchableHighlight,
 } from 'react-native';
 
+
 var {height, width} = Dimensions.get('window');
 var ch=height/3;
 var testData = [
@@ -84,12 +85,15 @@ var Matches= React.createClass ({
     return (
       <View style={styles.contain}>
         <View style={styles.prefirst}>
-        <TouchableHighlight onPress={this._navi} style={styles.navibutton}>
-          <Image
-            style={styles.naviimage}
-            source={require('./../Icons/naviIcon.png')}
-          />
-        </TouchableHighlight>
+            <TouchableHighlight onPress={this._navi} style={styles.navibutton}>
+              <Image
+                style={styles.naviimage}
+                source={require('./naviIcon.png')}
+              />
+            </TouchableHighlight>
+            <Text style={styles.maintext}>
+              Matches
+            </Text>
         </View>
 
         <View style={styles.scontainer}>
@@ -101,8 +105,6 @@ var Matches= React.createClass ({
         </View>
 
       </View>
-
-
     );
   }
 });
@@ -117,7 +119,6 @@ const styles = StyleSheet.create({
   },
   scontainer:{
     flex: 0.96,
-    
   },
   card: {
     backgroundColor: '#ffffff',
