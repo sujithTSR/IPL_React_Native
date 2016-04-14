@@ -16,12 +16,12 @@ import React, {
 var {height, width} = Dimensions.get('window');
 var ch=height/3;
 var testData = [
-    {"date":"April 14 2016","time":"20:30","BetAmt":"50","ImgTeamA":"http://nkjlive.com/wp-content/uploads/2012/02/kkr-new-logo-50x45.jpg","ImgTeamB":"http://2.bp.blogspot.com/-37ijSoTF-Vc/UQIQ4LPuNRI/AAAAAAAAAqk/oM_veRKidT4/s1600/rcb-logo.jpg","BetsA":"23","BetsB":"31" },
-    {"date":"April 15 2016","time":"17:30","BetAmt":"50","ImgTeamA":"http://nkjlive.com/wp-content/uploads/2012/02/kkr-new-logo-50x45.jpg","ImgTeamB":"http://2.bp.blogspot.com/-37ijSoTF-Vc/UQIQ4LPuNRI/AAAAAAAAAqk/oM_veRKidT4/s1600/rcb-logo.jpg","BetsA":"26","BetsB":"28" },
-    {"date":"April 16 2016","time":"09:00","BetAmt":"50","ImgTeamA":"http://nkjlive.com/wp-content/uploads/2012/02/kkr-new-logo-50x45.jpg","ImgTeamB":"http://2.bp.blogspot.com/-37ijSoTF-Vc/UQIQ4LPuNRI/AAAAAAAAAqk/oM_veRKidT4/s1600/rcb-logo.jpg","BetsA":"42","BetsB":"12" },
-    {"date":"April 18 2016","time":"20:30","BetAmt":"50","ImgTeamA":"http://nkjlive.com/wp-content/uploads/2012/02/kkr-new-logo-50x45.jpg","ImgTeamB":"http://2.bp.blogspot.com/-37ijSoTF-Vc/UQIQ4LPuNRI/AAAAAAAAAqk/oM_veRKidT4/s1600/rcb-logo.jpg","BetsA":"50","BetsB":"2" },
-    {"date":"April 20 2016","time":"20:00","BetAmt":"100","ImgTeamA":"http://nkjlive.com/wp-content/uploads/2012/02/kkr-new-logo-50x45.jpg","ImgTeamB":"http://2.bp.blogspot.com/-37ijSoTF-Vc/UQIQ4LPuNRI/AAAAAAAAAqk/oM_veRKidT4/s1600/rcb-logo.jpg","BetsA":"14","BetsB":"40" },
-    {"date":"April 22 2016","time":"20:30","BetAmt":"200","ImgTeamA":"http://nkjlive.com/wp-content/uploads/2012/02/kkr-new-logo-50x45.jpg","ImgTeamB":"http://2.bp.blogspot.com/-37ijSoTF-Vc/UQIQ4LPuNRI/AAAAAAAAAqk/oM_veRKidT4/s1600/rcb-logo.jpg","BetsA":"27","BetsB":"27" },
+    {"date":"April 14 2016","time":"20:30","BetAmt":"50","ImgTeamA":"http://9fa6cd9123d7ed1fa6c1-0231e2a04f3b76fed5ea3702225ca4f7.r63.cf3.rackcdn.com/Mumbai%20Indians.png","ImgTeamB":"http://sports24hour.com/wp-content/uploads/2016/04/Gujarat-Lions-Team-Logo-in-PNG-128x128.jpg","BetsA":"23","BetsB":"31" },
+    {"date":"April 14 2016","time":"20:30","BetAmt":"50","ImgTeamA":"http://9fa6cd9123d7ed1fa6c1-0231e2a04f3b76fed5ea3702225ca4f7.r63.cf3.rackcdn.com/Mumbai%20Indians.png","ImgTeamB":"http://sports24hour.com/wp-content/uploads/2016/04/Gujarat-Lions-Team-Logo-in-PNG-128x128.jpg","BetsA":"23","BetsB":"31" },
+    {"date":"April 14 2016","time":"20:30","BetAmt":"50","ImgTeamA":"http://9fa6cd9123d7ed1fa6c1-0231e2a04f3b76fed5ea3702225ca4f7.r63.cf3.rackcdn.com/Mumbai%20Indians.png","ImgTeamB":"http://sports24hour.com/wp-content/uploads/2016/04/Gujarat-Lions-Team-Logo-in-PNG-128x128.jpg","BetsA":"23","BetsB":"31" },
+    {"date":"April 14 2016","time":"20:30","BetAmt":"50","ImgTeamA":"http://9fa6cd9123d7ed1fa6c1-0231e2a04f3b76fed5ea3702225ca4f7.r63.cf3.rackcdn.com/Mumbai%20Indians.png","ImgTeamB":"http://sports24hour.com/wp-content/uploads/2016/04/Gujarat-Lions-Team-Logo-in-PNG-128x128.jpg","BetsA":"23","BetsB":"31" },
+    {"date":"April 14 2016","time":"20:30","BetAmt":"50","ImgTeamA":"http://9fa6cd9123d7ed1fa6c1-0231e2a04f3b76fed5ea3702225ca4f7.r63.cf3.rackcdn.com/Mumbai%20Indians.png","ImgTeamB":"http://sports24hour.com/wp-content/uploads/2016/04/Gujarat-Lions-Team-Logo-in-PNG-128x128.jpg","BetsA":"23","BetsB":"31" },
+    {"date":"April 14 2016","time":"20:30","BetAmt":"50","ImgTeamA":"http://9fa6cd9123d7ed1fa6c1-0231e2a04f3b76fed5ea3702225ca4f7.r63.cf3.rackcdn.com/Mumbai%20Indians.png","ImgTeamB":"http://sports24hour.com/wp-content/uploads/2016/04/Gujarat-Lions-Team-Logo-in-PNG-128x128.jpg","BetsA":"23","BetsB":"31" },
 ];
 
 
@@ -121,96 +121,99 @@ const styles = StyleSheet.create({
     flex: 0.96,
   },
   card: {
-    backgroundColor: '#ffffff',
-    marginLeft:width/36,
-    marginRight:width/36,
-    marginTop:10,
-    height:ch,
-  },
-  firstContainer: {
-    flexDirection:'row',
-    height:ch/6,
-  },
-  date:{
-    flex:1,
-    alignItems:'center',
-  },
-  time:{
-    flex:1,
-    alignItems:'center',
-  },
-  secondContainer:{
-    flexDirection:'row',
-    height:ch * 5/12,
+   backgroundColor: '#ffffff',
+   marginLeft:width/36,
+   marginRight:width/36,
+   marginTop:10,
+   height:ch,
+ },
+ firstContainer: {
+   flexDirection:'row',
+   height:ch/6,
+ },
+ date:{
+   flex:1,
+   alignItems:'center',
+   alignSelf:'center',
+ },
+ time:{
+   flex:1,
+   alignItems:'center',
+   alignSelf:'center',
+ },
+ secondContainer:{
+   flexDirection:'row',
+   height:ch * 5/12,
 
-  },
-  betA:{
-    flexDirection:'column',
-    flex:1,
-    alignItems:'center',
-    marginLeft:width/36,
-    marginRight:width/36,
-    marginTop:width/36,
-    marginBottom:width/36,
-    borderColor:'#000000',
-    borderWidth:1,
-    width:width/5,
-  },
-  teamA:{
-    flex:1,
-    height:90,
-    width:width/5,
-    height:ch * 5/12,
-    alignSelf:'center',
-    resizeMode:'contain',
-  },
-  vs:{
-    flex:1,
-    textAlign:'center',
-    textAlignVertical:'center',
-  },
-  teamB:{
-    flex:1,
-    resizeMode:'contain',
-    alignSelf:'center',
-    width:width/5,
-    height:ch * 5/12,
-  },
-  betB:{
-    flexDirection:'column',
-    flex:1,
-    alignItems:'center',
-    marginLeft:width/36,
-    marginRight:width/36,
-    marginTop:width/36,
-    marginBottom:width/36,
-    borderColor:'#000000',
-    borderWidth:1,
-    width:width/5,
-  },
-  thirdContainer:{
-    flexDirection:'row',
-    marginBottom:5,
-    height:ch * 5/12,
-  },
-  points:{
-    flex:1,
-    flexDirection:'row',
-    alignItems:'center'
-  },
-  textbet:{
-    fontSize:20,
-    textAlign:'center'
-  },
-  placeBet:{
-    flex:2,
-    backgroundColor:'#32cd32',
-    height:40,
-    alignSelf:'center',
-    borderRadius:10,
-    marginRight:width/36,
-    marginLeft:width/36,
-  },
+ },
+ betA:{
+   flexDirection:'column',
+   flex:1,
+   alignItems:'center',
+   marginLeft:width/36,
+   marginRight:width/36,
+   marginTop:width/36,
+   marginBottom:width/36,
+   borderColor:'#dcdcdc',
+   borderWidth:1,
+   width:width/5,
+   alignSelf:'center',
+ },
+ teamA:{
+   flex:1,
+   width:width/5,
+   height:ch * 5/12,
+   alignSelf:'center',
+   resizeMode:'contain',
+ },
+ vs:{
+   flex:1,
+   textAlign:'center',
+   textAlignVertical:'center',
+ },
+ teamB:{
+   flex:1,
+   resizeMode:'contain',
+   alignSelf:'center',
+   width:width/5,
+   height:ch * 5/12,
+ },
+ betB:{
+   flexDirection:'column',
+   flex:1,
+   alignItems:'center',
+   marginLeft:width/36,
+   marginRight:width/36,
+   marginTop:width/36,
+   marginBottom:width/36,
+   borderColor:'#dcdcdc',
+   borderWidth:1,
+   width:width/5,
+   alignSelf:'center',
+ },
+ thirdContainer:{
+   flexDirection:'row',
+   marginBottom:5,
+   height:ch * 5/12,
+ },
+ points:{
+   flex:1,
+   flexDirection:'row',
+   alignItems:'center'
+ },
+ textbet:{
+   fontSize:20,
+   textAlign:'center'
+ },
+ placeBet:{
+   flex:2,
+   backgroundColor:'#b0e0e6',
+   height:40,
+   alignSelf:'center',
+   borderRadius:10,
+   marginRight:width/36,
+   marginLeft:width/36,
+ },
   prefirst:{
     paddingTop:10,
     paddingBottom:10,
