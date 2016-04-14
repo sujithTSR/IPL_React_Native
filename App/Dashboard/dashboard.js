@@ -40,7 +40,7 @@ var Dashboard = React.createClass({
                 />
               </TouchableHighlight>
               <Text style={styles.maintext}>
-                User Details
+                Dashboard
               </Text>
         </View>
         <View style={styles.first}>
@@ -52,7 +52,7 @@ var Dashboard = React.createClass({
                   />
                 </TouchableHighlight>
                   <Text style={[styles.lrtext, {color: '1e90ff'} ]}>
-                    Played
+                    Played : 15
                   </Text>
             </View>
             <View style={styles.rightContainer}>
@@ -63,7 +63,7 @@ var Dashboard = React.createClass({
                   />
                 </TouchableHighlight>
                   <Text style={[styles.lrtext,{color: 'daa520'}]}>
-                    Remaining
+                    Remaining : 05
                   </Text>
               </View>
             </View>
@@ -76,7 +76,7 @@ var Dashboard = React.createClass({
                   />
                 </TouchableHighlight>
                 <Text style={[styles.lrtext,{color: '6b8e23'}]}>
-                  Won
+                  Won : 11
                 </Text>
             </View>
 
@@ -88,7 +88,7 @@ var Dashboard = React.createClass({
                   />
                 </TouchableHighlight>
                 <Text style={[styles.lrtext ,{color: 'f08080'}]}>
-                  Lost
+                  Lost : 04
                 </Text>
               </View>
             </View>
@@ -104,7 +104,7 @@ var Dashboard = React.createClass({
         <View style={styles.fourth}>
             <TouchableHighlight onPress={this._handlePress} style={styles.buttontype}>
               <Text style={styles.text}>
-                PLACE THE BET
+                Place the bet
               </Text>
             </TouchableHighlight>
         </View>
@@ -135,6 +135,7 @@ const styles = StyleSheet.create({
     flex: 0.3,
     alignItems:'center',
     flexDirection: 'row',
+    backgroundColor: '#e6e6fa',
   },
   second:{
     flex: 0.3,
@@ -142,18 +143,21 @@ const styles = StyleSheet.create({
     alignItems:'center',
     flexDirection: 'row',
     marginLeft:5,
+    backgroundColor: '#e6e6fa',
   },
   third:{
     flex: 0.18,
     alignItems:'center',
     justifyContent: 'space-around',
     flexDirection: 'row',
+    backgroundColor: '#e6e6fa',
   },
   fourth:{
     flex: 0.18,
     alignItems:'center',
     justifyContent: 'space-around',
     flexDirection: 'row',
+    backgroundColor: '#e6e6fa',
   },
   leftContainer:{
     padding:20,
@@ -191,21 +195,19 @@ const styles = StyleSheet.create({
     textAlign: 'left'
   },
   lrbox:{
-    flex: 0.7,
+    flex: 0.6,
     flexDirection: 'column',
-    padding: 5,
   },
   lrtext: {
-    flex: 0.3,
+    flex: 0.4,
     flexDirection: 'column',
     fontSize: 20,
-    paddingTop:10,
     alignSelf:'center',
     fontWeight:'bold'
 
   },
   thumbnail:{
-    height: height/9,
+    height: height/9 +5,
     width: width/5,
     alignSelf:'center'
   },
@@ -216,7 +218,7 @@ const styles = StyleSheet.create({
   buttontype:{
     width:width,
     height:60,
-    backgroundColor:'#1e90ff',
+    backgroundColor:'#add8e6',
     borderRadius:200,
     borderColor:'#000000',
     borderStyle:'dashed',
@@ -228,6 +230,7 @@ const styles = StyleSheet.create({
   text:{
     color:'#000000',
     fontSize:25,
+    fontStyle: 'italic',
     textAlign:'center',
     paddingTop:10
   }

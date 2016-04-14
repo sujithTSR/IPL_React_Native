@@ -25,32 +25,35 @@ class Navipanel extends Component {
   renderScene(route, navigator) {
       return (
         <View style={styles.container}>
-        <View style={styles.profilepic}>
-        <Image source={require('./../../images/navicover.jpg')} style={styles.largeimage}>
-          <Image source={require('./../../images/yuvaraj.jpg')} style={styles.image}/>
-          <Text style={styles.name}>Yuvaraj</Text>
-        </Image>
-        </View>
-        <View style={styles.buttonstyle}>
-          <TouchableOpacity
-              onPress={this.gotoNext.bind(this)}>
-            <Text style={styles.text}>Matches</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.secondcontainer}>
-        <View style={styles.buttonstyle}>
-          <TouchableOpacity
-              onPress={this.gotoNext.bind(this)}>
-            <Text style={styles.text}>Leader Board</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.buttonstyle}>
-          <TouchableOpacity
-              onPress={this.gotoNext.bind(this)}>
-            <Text style={styles.text}>Users</Text>
-          </TouchableOpacity>
-        </View>
-        </View>
+          <View style={styles.firstcontainer}>
+              <View style={styles.profilepic}>
+                <Image source={require('./../../images/navicover.jpg')} style={styles.largeimage}>
+                  <Image source={require('./../../images/yuvaraj.jpg')} style={styles.image}/>
+                  <Text style={styles.name}>Yuvaraj</Text>
+                </Image>
+              </View>
+          </View>
+
+          <View style={styles.secondcontainer}>
+              <View style={styles.buttonstyle}>
+                <TouchableOpacity
+                    onPress={this.gotoNext.bind(this)}>
+                  <Text style={styles.text}>Matches</Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.buttonstyle}>
+                <TouchableOpacity
+                    onPress={this.gotoNext.bind(this)}>
+                  <Text style={styles.text}>Leader Board</Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.buttonstyle}>
+                <TouchableOpacity
+                    onPress={this.gotoNext.bind(this)}>
+                  <Text style={styles.text}>Users</Text>
+                </TouchableOpacity>
+              </View>
+          </View>
         </View>
       );
     }
@@ -62,12 +65,15 @@ class Navipanel extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#e6e6fa',
     borderBottomRightRadius:0,
     borderTopRightRadius:0,
   },
+  firstcontainer:{
+    flex: 0.7,
+  },
   secondcontainer:{
-    flex:1,
+    flex: 0.6,
     borderBottomRightRadius:0,
     borderTopRightRadius:0,
   },
