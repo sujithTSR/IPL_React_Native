@@ -15,6 +15,8 @@ import React, {
 var Navipanel=require('./App/Navigation/Navipanel.js');
 var Dashboard= require('./App/Dashboard/dashboard.js');
 var Sample= require('./App/Navigation/sample.js');
+var Matches = require('./App/Components/Matches.js');
+
 var SCREEN_WIDTH =require('Dimensions').get('window').width;
 var BaseConfig = Navigator.SceneConfigs.FloatFromRight;
 var CustomLeftToRightGesture = Object.assign({}, BaseConfig.gestures.pop, {
@@ -41,6 +43,9 @@ var test = React.createClass({
     }
     else if(route.id === 3){
       return <Navipanel navigator={navigator} /> ;
+    }
+    else if(route.id === 4){
+      return <Matches navigator={navigator} /> ;
     }
   },
   _configureScene(route){

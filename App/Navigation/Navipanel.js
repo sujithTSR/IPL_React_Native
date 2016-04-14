@@ -1,18 +1,20 @@
 'use strict';
 
-var React = require('react-native');
-var {
+import React, {
   AppRegistry,
   StyleSheet,
-  Component,
   Text,
+  Dimensions,
+  Component,
+  Image,
+  ListView,
   View,
   Navigator,
   TouchableOpacity,
   TouchableHighlight,
-  Dimensions,
-  Image
-} = React;
+} from 'react-native';
+
+
 var {height, width} = Dimensions.get('window');
 class Navipanel extends Component {
   render() {
@@ -37,7 +39,7 @@ class Navipanel extends Component {
           <View style={styles.secondcontainer}>
               <View style={styles.buttonstyle}>
                 <TouchableOpacity
-                    onPress={this.gotoNext.bind(this)}>
+                    onPress={this.gotoMatches.bind(this)}>
                   <Text style={styles.text}>Matches</Text>
                 </TouchableOpacity>
               </View>
@@ -59,6 +61,9 @@ class Navipanel extends Component {
     }
     gotoNext() {
       this.props.navigator.push({ id: 2 });
+    }
+    gotoMatches(){
+      this.props.navigator.push({id: 4});
     }
 }
 
