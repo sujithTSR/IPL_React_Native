@@ -1,117 +1,110 @@
-'use strict';
+
 import React, {
   AppRegistry,
+  Component,
   StyleSheet,
   Text,
-  Component,
-  Dimensions,
-  Image,
-  ListView,
-  Navigator,
   View,
+  Dimensions,
+  ListView,
+  Image,
+  TouchableOpacity,
   TouchableHighlight,
-  TouchableOpacity
 } from 'react-native';
-var _ = require('lodash');
+
 var {height, width} = Dimensions.get('window');
 var ch=height/3;
-
 var testData = [
-    {"date":"April 14 2016","time":"20:30","BetAmt":"50","ImgTeamA":"./../Icons/teams/02.png","ImgTeamB":"./../Icons/teams/04.png","BetsA":"23","BetsB":"31" },
-    {"date":"April 15 2016","time":"17:30","BetAmt":"50","ImgTeamA":"./../Icons/teams/01.png","ImgTeamB":"./../Icons/teams/07.png","BetsA":"26","BetsB":"28" },
-    {"date":"April 16 2016","time":"09:00","BetAmt":"50","ImgTeamA":"./../Icons/teams/02.png","ImgTeamB":"./../Icons/teams/04.png","BetsA":"42","BetsB":"12" },
-    {"date":"April 18 2016","time":"20:30","BetAmt":"50","ImgTeamA":"./../Icons/teams/09.png","ImgTeamB":"./../Icons/teams/01.png","BetsA":"50","BetsB":"2" },
-    {"date":"April 20 2016","time":"20:00","BetAmt":"100","ImgTeamA":"./../Icons/teams/07.png","ImgTeamB":"./../Icons/teams/04.png","BetsA":"14","BetsB":"40" },
-    {"date":"April 22 2016","time":"20:30","BetAmt":"200","ImgTeamA":"./../Icons/teams/04.png","ImgTeamB":"./../Icons/teams/08.png","BetsA":"27","BetsB":"27" },
+    {"date":"April 14 2016","time":"20:30","BetAmt":"50","ImgTeamA":"http://nkjlive.com/wp-content/uploads/2012/02/kkr-new-logo-50x45.jpg","ImgTeamB":"http://2.bp.blogspot.com/-37ijSoTF-Vc/UQIQ4LPuNRI/AAAAAAAAAqk/oM_veRKidT4/s1600/rcb-logo.jpg","BetsA":"23","BetsB":"31" },
+    {"date":"April 15 2016","time":"17:30","BetAmt":"50","ImgTeamA":"http://nkjlive.com/wp-content/uploads/2012/02/kkr-new-logo-50x45.jpg","ImgTeamB":"http://2.bp.blogspot.com/-37ijSoTF-Vc/UQIQ4LPuNRI/AAAAAAAAAqk/oM_veRKidT4/s1600/rcb-logo.jpg","BetsA":"26","BetsB":"28" },
+    {"date":"April 16 2016","time":"09:00","BetAmt":"50","ImgTeamA":"http://nkjlive.com/wp-content/uploads/2012/02/kkr-new-logo-50x45.jpg","ImgTeamB":"http://2.bp.blogspot.com/-37ijSoTF-Vc/UQIQ4LPuNRI/AAAAAAAAAqk/oM_veRKidT4/s1600/rcb-logo.jpg","BetsA":"42","BetsB":"12" },
+    {"date":"April 18 2016","time":"20:30","BetAmt":"50","ImgTeamA":"http://nkjlive.com/wp-content/uploads/2012/02/kkr-new-logo-50x45.jpg","ImgTeamB":"http://2.bp.blogspot.com/-37ijSoTF-Vc/UQIQ4LPuNRI/AAAAAAAAAqk/oM_veRKidT4/s1600/rcb-logo.jpg","BetsA":"50","BetsB":"2" },
+    {"date":"April 20 2016","time":"20:00","BetAmt":"100","ImgTeamA":"http://nkjlive.com/wp-content/uploads/2012/02/kkr-new-logo-50x45.jpg","ImgTeamB":"http://2.bp.blogspot.com/-37ijSoTF-Vc/UQIQ4LPuNRI/AAAAAAAAAqk/oM_veRKidT4/s1600/rcb-logo.jpg","BetsA":"14","BetsB":"40" },
+    {"date":"April 22 2016","time":"20:30","BetAmt":"200","ImgTeamA":"http://nkjlive.com/wp-content/uploads/2012/02/kkr-new-logo-50x45.jpg","ImgTeamB":"http://2.bp.blogspot.com/-37ijSoTF-Vc/UQIQ4LPuNRI/AAAAAAAAAqk/oM_veRKidT4/s1600/rcb-logo.jpg","BetsA":"27","BetsB":"27" },
 ];
 
-var MatchesRow = React.createClass({
-  render(){
-    return(
-      <View style={styles.page}>
-        <View style={styles.card}>
-          <View style={styles.firstContainer}>
-            <View style={styles.date}>
-            <Text style={{color:'#ff8c00'}}> {this.props.date} </Text>
-            </View>
-            <View style={styles.time}>
-            <Text style={{color:'#00bfff'}}>{this.props.time}</Text>
-            </View>
-          </View>
-          <View style={styles.secondContainer}>
-            <View style={styles.betA}>
-              <Text style={{fontSize:20}}> {this.props.BetsA} </Text>
-              <Text> Bets</Text>
-            </View>
-            <Image source={this.props.ImgTeamA} style={styles.teamA}/>
-            <Text style={styles.vs}>VS</Text>
-            <Image source={this.props.ImgTeamB} style={styles.teamB}/>
-            <View style={styles.betB}>
-              <Text style={{fontSize:20}}> {this.props.BetsB} </Text>
-              <Text> Bets</Text>
-            </View>
-          </View>
-          <View style={styles.thirdContainer}>
-            <View style={styles.points}>
-            <Text style={{fontSize:30,color:'#00bfff',fontWeight:'bold'}}>{this.props.BetAmt}</Text>
-            <Text style={{fontSize:20,color:'#dcdcdc'}}> points</Text>
-            </View>
-              <View style={styles.placeBet}>
-                <TouchableOpacity>
-                <Text style={styles.textbet}> Place Bet</Text>
-                </TouchableOpacity>
-              </View>
-          </View>
-        </View>
 
-      </View>
-    );
-  }
-
-});
-
-var Matches = React.createClass({
+var Matches= React.createClass ({
   getInitialState: function() {
-    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    return {
-      dataSource: ds.cloneWithRows(testData),
-    };
-  },
-  _navi(){
-    this.props.navigator.push({id: 3});
-  },
-  componentDidMount() {
-  },
-  renderRow(rowData) {
-    return <MatchesRow {...rowData} />
-  },
+   var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
+   return {
+     dataSource: ds.cloneWithRows(testData),
+   };
+ },
+
+ componentDidMount() {
+
+ },
+ _navi(){
+   this.props.navigator.push({id: 3});
+ },
+ renderRow(rowData) {
+   return(
+   <View style={styles.page}>
+     <View style={styles.card}>
+       <View style={styles.firstContainer}>
+         <View style={styles.date}>
+         <Text style={{color:'#ff8c00'}}> {rowData.date} </Text>
+         </View>
+         <View style={styles.time}>
+         <Text style={{color:'#00bfff'}}>{rowData.time}</Text>
+         </View>
+       </View>
+       <View style={styles.secondContainer}>
+         <View style={styles.betA}>
+           <Text style={{fontSize:20}}> {rowData.BetsA} </Text>
+           <Text> Bets</Text>
+         </View>
+         <Image source={{uri:rowData.ImgTeamA}} style={styles.teamA}/>
+         <Text style={styles.vs}>VS</Text>
+         <Image source={{uri:rowData.ImgTeamB}} style={styles.teamB}/>
+         <View style={styles.betB}>
+           <Text style={{fontSize:20}}> {rowData.BetsB} </Text>
+           <Text> Bets</Text>
+         </View>
+       </View>
+       <View style={styles.thirdContainer}>
+         <View style={styles.points}>
+         <Text style={{fontSize:30,color:'#00bfff',fontWeight:'bold'}}> {rowData.BetAmt} </Text>
+         <Text style={{fontSize:20,color:'#dcdcdc'}}> points</Text>
+         </View>
+           <View style={styles.placeBet}>
+             <TouchableOpacity>
+             <Text style={styles.textbet}> Place Bet</Text>
+             </TouchableOpacity>
+           </View>
+       </View>
+     </View>
+
+   </View>
+ );
+ },
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.contain}>
         <View style={styles.prefirst}>
-          <TouchableHighlight onPress={this._navi} style={styles.navibutton}>
-            <Image
-              style={styles.naviimage}
-              source={require('./../Icons/naviIcon.png')}
-            />
-          </TouchableHighlight>
-          <Text style={styles.maintext}>
-            Matches
-          </Text>
+        <TouchableHighlight onPress={this._navi} style={styles.navibutton}>
+          <Image
+            style={styles.naviimage}
+            source={require('./../Icons/naviIcon.png')}
+          />
+        </TouchableHighlight>
         </View>
+
         <View style={styles.scontainer}>
           <ListView
             ref="listView"
-            automaticallyAdjustContentInsets={false}
             dataSource={this.state.dataSource}
             renderRow={this.renderRow}
           />
         </View>
+
       </View>
 
+
     );
-  },
+  }
 });
 
 const styles = StyleSheet.create({
@@ -119,14 +112,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#dcdcdc',
   },
-  container:{
+  contain:{
     flex: 1,
-    flexDirection: 'Row',
   },
   scontainer:{
-    flex: 0.94,
-    flexDirection: 'Row',
-
+    flex: 0.96,
+    
   },
   card: {
     backgroundColor: '#ffffff',
@@ -230,7 +221,7 @@ const styles = StyleSheet.create({
     flex:0.1,
     paddingLeft:10,
     width: 30,
-    height: 30
+    height: height/18,
   },
   naviimage:{
     width: 29,
@@ -242,7 +233,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold'
   },
+
 });
 
-module.exports=Matches;
-AppRegistry.registerComponent('Matches', () => Matches);
+module.exports = Matches;

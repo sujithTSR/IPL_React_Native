@@ -62,8 +62,9 @@ class Navipanel extends Component {
     gotoNext() {
       this.props.navigator.push({ id: 2 });
     }
+
     gotoMatches(){
-      this.props.navigator.push({id: 4});
+      this.props.navigator.push({ id: 4 });
     }
 }
 
