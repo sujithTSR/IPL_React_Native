@@ -28,6 +28,9 @@ var Dashboard = React.createClass({
   _navi(){
     this.props.navigator.push({id: 3});
   },
+  gotoMatches(){
+    this.props.navigator.push({ id: 4 });
+  },
 
   render() {
     return (
@@ -45,64 +48,67 @@ var Dashboard = React.createClass({
         </View>
         <View style={styles.first}>
             <View style={styles.leftContainer}>
-                <TouchableHighlight onPress={this._handlePress} style={styles.lrbox}>
+
                   <Image
                     style={styles.thumbnail}
                     source={require('./../../Icons/dashboard/ball.png')}
                   />
-                </TouchableHighlight>
-                  <Text style={[styles.lrtext, {color: '1e90ff'} ]}>
+                  <View style={{padding:10}}>
+                  </View>
+                  <Text style={[styles.lrtext, {color: '#1e90ff'} ]}>
                     Played : 15
                   </Text>
             </View>
             <View style={styles.rightContainer}>
-                <TouchableHighlight onPress={this._handlePress} style={styles.lrbox}>
+
                   <Image
                     style={styles.thumbnail}
                     source={require('./../../Icons/dashboard/bat.png')}
                   />
-                </TouchableHighlight>
-                  <Text style={[styles.lrtext,{color: 'daa520'}]}>
+                  <View style={{padding:10}}>
+                  </View>
+                  <Text style={[styles.lrtext,{color: '#daa520'}]}>
                     Remaining : 05
                   </Text>
               </View>
             </View>
         <View style={styles.second}>
             <View style={styles.leftContainer}>
-                <TouchableHighlight onPress={this._handlePress} style={styles.lrbox}>
+
                   <Image
                     style={styles.thumbnail}
                     source={require('./../../Icons/dashboard/win.png')}
                   />
-                </TouchableHighlight>
-                <Text style={[styles.lrtext,{color: '6b8e23'}]}>
+                  <View style={{padding:10}}>
+                  </View>
+                <Text style={[styles.lrtext,{color: '#6b8e23'}]}>
                   Won : 11
                 </Text>
             </View>
 
             <View style={styles.rightContainer}>
-                <TouchableHighlight onPress={this._handlePress} style={styles.lrbox}>
+
                   <Image
                     style={styles.thumbnail}
                     source={require('./../../Icons/dashboard/lost.png')}
                   />
-                </TouchableHighlight>
-                <Text style={[styles.lrtext ,{color: 'f08080'}]}>
+                  <View style={{padding:10}}>
+                  </View>
+                <Text style={[styles.lrtext ,{color: '#f08080'}]}>
                   Lost : 04
                 </Text>
               </View>
             </View>
 
         <View style={styles.third}>
-            <TouchableHighlight onPress={this._handlePress} style={styles.buttontype}>
-              <Text style={styles.text}>
-                Credits
+
+              <Text style={styles.pointstext}>
+                Points: 354
               </Text>
-            </TouchableHighlight>
         </View>
 
         <View style={styles.fourth}>
-            <TouchableHighlight onPress={this._handlePress} style={styles.buttontype}>
+            <TouchableHighlight onPress={this._gotoMatches} style={styles.buttontype}>
               <Text style={styles.text}>
                 Place the bet
               </Text>
@@ -158,6 +164,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     flexDirection: 'row',
     backgroundColor: '#e6e6fa',
+    paddingBottom:20
   },
   leftContainer:{
     padding:20,
@@ -203,7 +210,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     fontSize: 20,
     alignSelf:'center',
-    fontWeight:'bold'
+    fontWeight:'bold',
+
 
   },
   thumbnail:{
@@ -218,19 +226,25 @@ const styles = StyleSheet.create({
   buttontype:{
     width:width,
     height:60,
-    backgroundColor:'#add8e6',
+    backgroundColor:'#f0e68c',
     borderRadius:200,
     borderColor:'#000000',
     borderStyle:'dashed',
-    elevation:20,
     paddingTop:10,
     marginTop:20,
     alignSelf:'center'
   },
+  pointstext:{
+    color:'#d2691e',
+    fontSize: 25,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    paddingTop: 10
+  },
   text:{
-    color:'#000000',
+    color:'#2f4f4f',
     fontSize:25,
-    fontStyle: 'italic',
+    fontStyle: 'normal',
     textAlign:'center',
     paddingTop:10
   }
