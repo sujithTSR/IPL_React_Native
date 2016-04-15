@@ -28,8 +28,8 @@ var Dashboard = React.createClass({
   _navi(){
     this.props.navigator.push({id: 3});
   },
-  gotoMatches(){
-    this.props.navigator.push({ id: 4 });
+  _gotoMatches(){
+    this.props.navigator.push({ id: 4});
   },
 
   render() {
