@@ -53,47 +53,56 @@ var Matches= React.createClass ({
 
      Place_Bet= "Bet Placed";
    }
- }
-renderUpcoming(rowdata){
+ },
+renderUpcoming(rowData){
   var date_elements = rowData.date.split(" ");
-  if(date_elements[0] >= Date_current.getMonth()){
+  if(date_elements[0] >= 1+Date_current.getMonth()){
     if(date_elements[1] > Date_current.getDate()){
-      renderRow(rowData);
+      return(
+        <View>
+          {this.renderRow(rowData)}
+        </View>
+      );
+    }
+    else{
+      return (
+        <View>
+        </View>
+      );
     }
   }
-}
+  else{
+    return (
+      <View>
+      </View>
+    );
+  }
+},
 
 renderFinished(rowData){
 var date_elements = rowData.date.split(" ");
-  if(date_elements[0]<=Date_current.getMonth()){
-    if(date.elements[1]<Date_current.getDate()){
-      renderRow(rowData);
+  if(date_elements[0]<= 1+Date_current.getMonth()){
+    if(date_elements[1]<Date_current.getDate()){
+      return(
+        <View>
+          {this.renderRow(rowData)}
+        </View>
+      );
+    }
+    else{
+      return (
+        <View>
+        </View>
+      );
     }
   }
-}
- renderdivide(rowData){
-   // 0 - month
-   // 1 - day
-   // 2 - Year
-
-   return(
-     <View>
-          <ScrollableTabView renderTabBar={() => <ScrollableTabBar />}>
-              <ScrollView tabLabel='Upcoming'>
-                <View>
-                  {this.renderUpcoming(rowData)}
-                </View>
-              </ScrollView>
-              <ScrollView tabLabel='Finished'>
-                <View>
-                  {this.renderFinished(rowData)}
-                </View>
-              </ScrollView>
-          </ScrollableTabView>
+  else{
+    return (
+      <View>
       </View>
-   );
-
- }
+    );
+  }
+},
  renderRow(rowData) {
    return(
    <View style={styles.page}>
@@ -149,14 +158,29 @@ var date_elements = rowData.date.split(" ");
               Matches
             </Text>
         </View>
-
-        <View style={styles.scontainer}>
-          <ListView
-            ref="listView"
-            dataSource={this.state.dataSource}
-            renderRow={this.renderdivide}
-          />
+        <View style={styles.tabcontainer}>
+           <ScrollableTabView renderTabBar={() => <ScrollableTabBar />}>
+             <ScrollView tabLabel='Upcoming'>
+               <View style={styles.scontainer}>
+                 <ListView
+                   ref="listView"
+                   dataSource={this.state.dataSource}
+                   renderRow={this.renderUpcoming}
+                 />
+               </View>
+             </ScrollView>
+             <ScrollView tabLabel='Finished'>
+                 <View style={styles.scontainer}>
+                   <ListView
+                     ref="listView"
+                     dataSource={this.state.dataSource}
+                     renderRow={this.renderFinished}
+                   />
+                 </View>
+             </ScrollView>
+           </ScrollableTabView>
         </View>
+
 
       </View>
     );
@@ -290,6 +314,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
     fontWeight: 'bold'
+  },
+  tabcontainer:{
+    flex: 1,
   },
 
 });
