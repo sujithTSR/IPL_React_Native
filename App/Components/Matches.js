@@ -11,6 +11,7 @@ import React, {
   TouchableOpacity,
   TouchableHighlight,
 } from 'react-native';
+var Place_Bet = "Place Bet";
 
 
 var {height, width} = Dimensions.get('window');
@@ -40,6 +41,15 @@ var Matches= React.createClass ({
  _navi(){
    this.props.navigator.push({id: 3});
  },
+ _PlaceBet(){
+   if(Place_Bet === "Bet Placed"){
+     Place_Bet="Place Bet";
+   }
+   else if(Place_Bet === "Place Bet"){
+
+     Place_Bet= "Bet Placed";
+   }
+ }
  renderRow(rowData) {
    return(
    <View style={styles.page}>
@@ -71,8 +81,8 @@ var Matches= React.createClass ({
          <Text style={{fontSize:20,color:'#dcdcdc'}}> points</Text>
          </View>
            <View style={styles.placeBet}>
-             <TouchableOpacity>
-             <Text style={styles.textbet}> Place Bet</Text>
+             <TouchableOpacity onPress={this._PlaceBet}>
+              <Text style={styles.textbet}> {Place_Bet}</Text>
              </TouchableOpacity>
            </View>
        </View>

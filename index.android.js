@@ -10,6 +10,7 @@ import React, {
   AlertIOS,
   Dimensions,
   Navigator,
+  BackAndroid,
 } from 'react-native';
 
 var Navipanel=require('./App/Navigation/Navipanel.js');
@@ -23,6 +24,13 @@ var BaseConfig = Navigator.SceneConfigs.FloatFromRight;
 var CustomLeftToRightGesture = Object.assign({}, BaseConfig.gestures.pop, {
   snapVelocity: 8,
   edgeHitWidth: SCREEN_WIDTH,
+});
+BackAndroid.addEventListener('hardwareBackPress', () => {
+if (_navigator.getCurrentRoutes().length === 1  ) {
+   return false;
+}
+_navigator.pop();
+return true;
 });
 var CustomSceneConfig = Object.assign({}, BaseConfig, {
   // A very tighly wound spring will make this transition fast
@@ -53,6 +61,7 @@ var test = React.createClass({
     }
 
   },
+
   _configureScene(route){
     return CustomSceneConfig;
   },
