@@ -140,7 +140,6 @@ var date_elements = rowData.date.split(" ");
            </View>
        </View>
      </View>
-
    </View>
  );
  },
@@ -159,8 +158,10 @@ var date_elements = rowData.date.split(" ");
             </Text>
         </View>
         <View style={styles.tabcontainer}>
-           <ScrollableTabView renderTabBar={() => <ScrollableTabBar />}>
-             <ScrollView tabLabel='Upcoming'>
+           <ScrollableTabView renderTabBar={() => <ScrollableTabBar />}
+
+           >
+             <ScrollView tabLabel='Upcoming' style={styles.tabView} >
                <View style={styles.scontainer}>
                  <ListView
                    ref="listView"
@@ -169,7 +170,7 @@ var date_elements = rowData.date.split(" ");
                  />
                </View>
              </ScrollView>
-             <ScrollView tabLabel='Finished'>
+             <ScrollView tabLabel='Finished' style={styles.tabView}>
                  <View style={styles.scontainer}>
                    <ListView
                      ref="listView"
@@ -197,6 +198,7 @@ const styles = StyleSheet.create({
   },
   scontainer:{
     flex: 0.96,
+    paddingBottom:5,
   },
   card: {
    backgroundColor: '#ffffff',
@@ -318,6 +320,12 @@ const styles = StyleSheet.create({
   tabcontainer:{
     flex: 1,
   },
+  tab:{
+    alignItems: 'center',
+  },
+  tabView: {
+    flex: 1,
+},
 
 });
 
