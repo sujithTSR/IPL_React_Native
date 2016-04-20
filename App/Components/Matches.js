@@ -159,7 +159,7 @@ var date_elements = rowData.date.split(" ");
         </View>
         <View style={styles.tabcontainer}>
            <ScrollableTabView renderTabBar={() => <ScrollableTabBar />}
-
+           tabBarBackgroundColor='#ffffff'
            >
              <ScrollView tabLabel='Upcoming' style={styles.tabView} >
                <View style={styles.scontainer}>
@@ -319,6 +319,7 @@ const styles = StyleSheet.create({
   },
   tabcontainer:{
     flex: 1,
+    backgroundColor:'#dcdcdc',
   },
   tab:{
     alignItems: 'center',
