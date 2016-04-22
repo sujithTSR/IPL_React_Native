@@ -94,7 +94,7 @@ var Users= React.createClass ({
               />
             </TouchableHighlight>
             <Text style={styles.maintext}>
-              Matches
+              Users
             </Text>
         </View>
 

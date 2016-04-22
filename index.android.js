@@ -15,7 +15,7 @@ var _navigator;
 var Navipanel=require('./App/Navigation/Navipanel.js');
 var Dashboard= require('./App/Dashboard/dashboard.js');
 var Sample= require('./App/Navigation/sample.js');
-var Matches = require('./App/Components/Matches.js');
+var Matches = require('./App/Navigation/NavigationMatches.js');
 var Users = require('./App/Components/Users.js');
 
 var SCREEN_WIDTH =require('Dimensions').get('window').width;
