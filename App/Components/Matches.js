@@ -2,7 +2,6 @@
 
 import ScrollableTabView, { DefaultTabBar, ScrollableTabBar, } from 'react-native-scrollable-tab-view';
 
-
 import React, {
   AppRegistry,
   Component,
