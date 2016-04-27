@@ -20,27 +20,30 @@ var Date_current = new Date();
 
 var {height, width} = Dimensions.get('window');
 var ch=height/3;
-var testData = [
-    {"date":"03 10 2016","time":"20:30","BetAmt":"50","ImgTeamA":"http://9fa6cd9123d7ed1fa6c1-0231e2a04f3b76fed5ea3702225ca4f7.r63.cf3.rackcdn.com/Mumbai%20Indians.png","ImgTeamB":"http://sports24hour.com/wp-content/uploads/2016/04/Gujarat-Lions-Team-Logo-in-PNG-128x128.jpg","BetsA":"23","BetsB":"31" },
-    {"date":"04 23 2016","time":"20:30","BetAmt":"50","ImgTeamA":"http://9fa6cd9123d7ed1fa6c1-0231e2a04f3b76fed5ea3702225ca4f7.r63.cf3.rackcdn.com/Mumbai%20Indians.png","ImgTeamB":"http://sports24hour.com/wp-content/uploads/2016/04/Gujarat-Lions-Team-Logo-in-PNG-128x128.jpg","BetsA":"23","BetsB":"31" },
-    {"date":"04 29 2016","time":"20:30","BetAmt":"50","ImgTeamA":"http://9fa6cd9123d7ed1fa6c1-0231e2a04f3b76fed5ea3702225ca4f7.r63.cf3.rackcdn.com/Mumbai%20Indians.png","ImgTeamB":"http://sports24hour.com/wp-content/uploads/2016/04/Gujarat-Lions-Team-Logo-in-PNG-128x128.jpg","BetsA":"23","BetsB":"31" },
-    {"date":"04 11 2016","time":"20:30","BetAmt":"50","ImgTeamA":"http://9fa6cd9123d7ed1fa6c1-0231e2a04f3b76fed5ea3702225ca4f7.r63.cf3.rackcdn.com/Mumbai%20Indians.png","ImgTeamB":"http://sports24hour.com/wp-content/uploads/2016/04/Gujarat-Lions-Team-Logo-in-PNG-128x128.jpg","BetsA":"23","BetsB":"31" },
-    {"date":"03 22 2016","time":"20:30","BetAmt":"50","ImgTeamA":"http://9fa6cd9123d7ed1fa6c1-0231e2a04f3b76fed5ea3702225ca4f7.r63.cf3.rackcdn.com/Mumbai%20Indians.png","ImgTeamB":"http://sports24hour.com/wp-content/uploads/2016/04/Gujarat-Lions-Team-Logo-in-PNG-128x128.jpg","BetsA":"23","BetsB":"31" },
-    {"date":"04 14 2016","time":"20:30","BetAmt":"50","ImgTeamA":"http://9fa6cd9123d7ed1fa6c1-0231e2a04f3b76fed5ea3702225ca4f7.r63.cf3.rackcdn.com/Mumbai%20Indians.png","ImgTeamB":"http://sports24hour.com/wp-content/uploads/2016/04/Gujarat-Lions-Team-Logo-in-PNG-128x128.jpg","BetsA":"23","BetsB":"31" },
-];
+var testData = 'https://drive.google.com/file/d/0BwYLEVl6yNprSEVJVVg4OC10eGM/view?usp=sharing' ;
+
 
 
 var Matches= React.createClass ({
   getInitialState: function() {
    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-
    return {
-     dataSource: ds.cloneWithRows(testData),
-   };
+    dataSource: ds.cloneWithRows(['row 1', 'row 2']),
+  };
  },
-
+ fetchData() {
+    fetch(testData)
+      .then((response) => response.json())
+      .then((responseData) => {
+        this.setState({
+          dataSource: this.state.dataSource.cloneWithRows(responseData.matches),
+          loaded: true,
+        });
+      })
+      .done();
+  },
  componentDidMount() {
-
+    this.fetchData();
  },
  _navi(){
    this.props.navigator.push({id: 3});
@@ -50,14 +53,13 @@ var Matches= React.createClass ({
      Place_Bet="Place Bet";
    }
    else if(Place_Bet === "Place Bet"){
-
      Place_Bet= "Bet Placed";
    }
  },
 renderUpcoming(rowData){
-  var date_elements = rowData.date.split(" ");
-  if(date_elements[0] >= 1+Date_current.getMonth()){
-    if(date_elements[1] > Date_current.getDate()){
+  var date_elements = rowData.time_stamp.split("-");
+  if(date_elements[1] >= 1+Date_current.getMonth()){
+    if(date_elements[2] > Date_current.getDate()){
       return(
         <View>
           {this.renderRow(rowData)}
@@ -80,9 +82,9 @@ renderUpcoming(rowData){
 },
 
 renderFinished(rowData){
-var date_elements = rowData.date.split(" ");
-  if(date_elements[0]<= 1+Date_current.getMonth()){
-    if(date_elements[1]<Date_current.getDate()){
+var date_elements = rowData.time_stamp.split("-");
+  if(date_elements[1]<= 1+Date_current.getMonth()){
+    if(date_elements[2]<Date_current.getDate()){
       return(
         <View>
           {this.renderRow(rowData)}
@@ -109,28 +111,28 @@ var date_elements = rowData.date.split(" ");
      <View style={styles.card}>
        <View style={styles.firstContainer}>
          <View style={styles.date}>
-         <Text style={{color:'#ff8c00'}}> {rowData.date} </Text>
+         <Text style={{color:'#ff8c00'}}> {rowData.time_stamp} </Text>
          </View>
          <View style={styles.time}>
-         <Text style={{color:'#00bfff'}}>{rowData.time}</Text>
+         <Text style={{color:'#00bfff'}}>12:30 PM </Text>
          </View>
        </View>
        <View style={styles.secondContainer}>
          <View style={styles.betA}>
-           <Text style={{fontSize:20}}> {rowData.BetsA} </Text>
+           <Text style={{fontSize:20}}> {rowData.bets_A} </Text>
            <Text> Bets</Text>
          </View>
-         <Image source={{uri:rowData.ImgTeamA}} style={styles.teamA}/>
+         <Image source={{uri:rowData.Image_A}} style={styles.teamA}/>
          <Text style={styles.vs}>VS</Text>
-         <Image source={{uri:rowData.ImgTeamB}} style={styles.teamB}/>
+         <Image source={{uri:rowData.Image_B}} style={styles.teamB}/>
          <View style={styles.betB}>
-           <Text style={{fontSize:20}}> {rowData.BetsB} </Text>
+           <Text style={{fontSize:20}}> {rowData.bets_B} </Text>
            <Text> Bets</Text>
          </View>
        </View>
        <View style={styles.thirdContainer}>
          <View style={styles.points}>
-         <Text style={{fontSize:30,color:'#00bfff',fontWeight:'bold'}}> {rowData.BetAmt} </Text>
+         <Text style={{fontSize:30,color:'#00bfff',fontWeight:'bold'}}> {rowData.bet_points} </Text>
          <Text style={{fontSize:20,color:'#dcdcdc'}}> points</Text>
          </View>
            <View style={styles.placeBet}>
@@ -143,6 +145,11 @@ var date_elements = rowData.date.split(" ");
    </View>
  );
  },
+ renderSeparator(sectionID, rowID) {
+      return (
+          <View style={styles.separator} key={sectionID+rowID}/>
+      );
+  },
   render() {
     return (
       <View style={styles.contain}>
@@ -158,24 +165,15 @@ var date_elements = rowData.date.split(" ");
             </Text>
         </View>
         <View style={styles.tabcontainer}>
-           <ScrollableTabView renderTabBar={() => <ScrollableTabBar />}
-
-           >
-             <ScrollView tabLabel='Upcoming' style={styles.tabView} >
-               <View style={styles.scontainer}>
-                 <ListView
-                   ref="listView"
-                   dataSource={this.state.dataSource}
-                   renderRow={this.renderUpcoming}
-                 />
-               </View>
-             </ScrollView>
+           <ScrollableTabView renderTabBar={() => <ScrollableTabBar />}>
+             
              <ScrollView tabLabel='Finished' style={styles.tabView}>
                  <View style={styles.scontainer}>
                    <ListView
                      ref="listView"
                      dataSource={this.state.dataSource}
-                     renderRow={this.renderFinished}
+                     renderRow={this.renderRow}
+                     renderSeparator={this.renderSeparator}
                    />
                  </View>
              </ScrollView>

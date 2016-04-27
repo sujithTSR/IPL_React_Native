@@ -14,8 +14,8 @@ import React, {
   TouchableHighlight,
 } from 'react-native';
 
-
 var {height, width} = Dimensions.get('window');
+
 class Navipanel extends Component {
   render() {
     return (
@@ -76,60 +76,62 @@ class Navipanel extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: width,
+    height: height,
     backgroundColor: '#e6e6fa',
-    borderBottomRightRadius:0,
-    borderTopRightRadius:0,
+
   },
   firstcontainer:{
     flex: 0.7,
+    width:width,
+    height:height/2,
   },
   secondcontainer:{
     flex: 0.6,
-    borderBottomRightRadius:0,
-    borderTopRightRadius:0,
+    width:width,
+    height:height/2,
   },
   name:{
     paddingTop:250,
     alignSelf:'center',
     fontSize:30,
-    opacity:1,
     color:'#ffffff',
   },
   profilepic:{
-    height:300,
+    height:height/2,
     width:width,
   },
   largeimage:{
-    height:300,
+    height:height/2,
     width:width,
     opacity:0.8,
   },
   image: {
-    height: 150,
-    width: 150,
-    borderRadius:100,
+    height: height/4,
+    width: height/4,
+    borderRadius:height/4,
     borderWidth:0,
     alignSelf:'center',
-    marginTop:50,
+    marginTop:height/8,
     opacity:1,
   },
   buttonstyle:{
-    width:300,
-    height:60,
+    width:width,
+    height:height/12,
     backgroundColor:'#333333',
     borderRadius:200,
     borderColor:'#000000',
-    borderStyle:'dashed',
-    elevation:20,
-    paddingTop:10,
     marginTop:20,
-    alignSelf:'center'
+    alignSelf:'center',
+    justifyContent:'space-around',
   },
   text:{
     color:'#ffffff',
     fontSize:25,
     textAlign:'center',
-    paddingTop:10
+    marginTop:5,
+    alignSelf:'center',
+    fontWeight:'normal',
   }
 });
 
