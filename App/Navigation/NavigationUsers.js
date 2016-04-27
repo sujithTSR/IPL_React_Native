@@ -30,7 +30,7 @@ class NavigationUsers extends React.Component{
     this.setState({isOpen});
   }
     render() {
-      const content = <Kick navigator={navigator} />
+      const content = <Kick navigator={this.props.navigator} />
       return (
         <SideMenu menu= {content}
           isOpen={this.state.isOpen}

@@ -32,7 +32,7 @@ class NavigationDashboard extends React.Component{
     this.setState({isOpen});
   }
     render() {
-      const content = <Kick navigator={navigator} />
+      const content = <Kick navigator={this.props.navigator} />
       return (
         <SideMenu menu= {content}
           isOpen={this.state.isOpen}
@@ -51,7 +51,8 @@ class NavigationDashboard extends React.Component{
           </View>
 
           <View style={styles.second}>
-            <Content />
+            <Content
+            navigator = {this.props.navigator} />
           </View>
         </SideMenu>
       );

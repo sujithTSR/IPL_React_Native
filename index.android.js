@@ -12,8 +12,9 @@ import React, {
 } from 'react-native';
 
 var _navigator;
+var Dashboard=require('./App/Navigation/NavigationDashboard');
 var Navipanel=require('./App/Navigation/Navipanel.js');
-var Dashboard= require('./App/Navigation/NavigationDashboard.js');
+
 var Sample= require('./App/Navigation/sample.js');
 var Matches = require('./App/Navigation/NavigationMatches.js');
 var Users = require('./App/Navigation/NavigationUsers.js');
@@ -46,34 +47,21 @@ var CustomSceneConfig = Object.assign({}, BaseConfig, {
 
 var test = React.createClass({
 
-  _renderScene(route,navigator){
-    _navigator=navigator;
-    if(route.id === 1){
-      return <Dashboard navigator={navigator}/>;
-    }
-    else if(route.id === 2){
-      return <Sample navigator={navigator} /> ;
-    }
-    else if(route.id === 3){
-      return <Navipanel navigator={navigator} /> ;
-    }
-    else if(route.id === 4){
-      return <Matches navigator={navigator} /> ;
-    }
-    else if(route.id === 5){
-      return <Users navigator={navigator} />
-    }
-
-  },
-
   _configureScene(route){
     return CustomSceneConfig;
   },
   render() {
     return (
-      <Navigator initialRoute={{id:1}}
-        renderScene={this._renderScene}
-        configureScene={this._configureScene}
+      <Navigator
+        initialRoute={{id: Dashboard}}
+        renderScene={(route, navigator)=>{
+          if(route.id){
+            return React.createElement(route.id, {navigator});
+          }
+        }}
+        configureScene={() => {
+          return Navigator.SceneConfigs.FadeAndroid;
+        }}
       />
     );
   }

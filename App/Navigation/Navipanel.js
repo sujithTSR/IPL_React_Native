@@ -14,8 +14,12 @@ import React, {
   TouchableHighlight,
 } from 'react-native';
 
-
+var Dashboard= require('./NavigationDashboard.js');
+var Sample= require('./sample.js');
+var Matches = require('./NavigationMatches.js');
+var Users = require('./NavigationUsers.js');
 var {height, width} = Dimensions.get('window');
+
 width= 2*width/3;
 class Navipanel extends Component {
   render() {
@@ -55,16 +59,22 @@ class Navipanel extends Component {
   }
 
     gotoNext() {
-      this.props.navigator.push({ id: 2 });
+      //navigator.pop();
+      this.props.navigator.push({id: Sample });
     }
     gotoUsers(){
-      this.props.navigator.push({ id : 5});
+      //navigator.replace({id: Users});
+      this.props.navigator.push({id: Users  });
     }
     gotoDashboard(){
-      this.props.navigator.push({ id : 1});
+      this.props.navigator.push({id: Dashboard });
+      //this.props.navigator.push({ id : Dashboard });
     }
     gotoMatches(){
-      this.props.navigator.push({ id: 4 });
+      this.props.navigator.push({id: Matches });
+
+      //navigator.replace({id: Matches});
+
     }
 }
 

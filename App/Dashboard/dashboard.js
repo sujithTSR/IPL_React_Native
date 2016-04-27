@@ -5,6 +5,8 @@ var height_box = 7*height/23;
 var width_box=  6*width/10;
 var height_line= 2*height/27;
 var width_line=  8*width/10;
+var Matches = require('./../Navigation/NavigationMatches.js');
+
 
 import React, {
   AppRegistry,
@@ -15,24 +17,20 @@ import React, {
   Image,
   ListView,
   View,
+
   TouchableHighlight,
 } from 'react-native';
 
 var Dashboard = React.createClass({
-  _handlePress() {
-    this.props.navigator.push({id: 2});
-  },
-  _navi(){
-    this.props.navigator.push({id: 3});
-  },
+
   _gotoMatches(){
-    this.props.navigator.push({ id: 4});
+    this.props.navigator.push({id: Matches});
   },
 
   render() {
     return (
       <View style={styles.container}>
-        
+
         <View style={styles.first}>
             <View style={styles.leftContainer}>
 
