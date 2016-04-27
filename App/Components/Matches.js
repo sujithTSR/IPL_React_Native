@@ -57,7 +57,7 @@ var Matches= React.createClass ({
    }
  },
   renderUpcoming(rowData){
-    var date_elements = rowData.time_stamp.split(" ");
+    var date_elements = String(rowData.date).split(" ");
     if(date_elements[1] >= 1+Date_current.getMonth()){
       if(date_elements[2] > Date_current.getDate()){
         return(
@@ -82,7 +82,10 @@ var Matches= React.createClass ({
   },
 
 renderFinished(rowData){
-  var date_elements = rowData.time_stamp.split(" ");
+
+    var dat = String(rowData.date);
+    var date_elements = dat.split(" ");
+
     if(date_elements[1]<= 1+Date_current.getMonth()){
       if(date_elements[2]<Date_current.getDate()){
         return(
@@ -111,7 +114,7 @@ renderFinished(rowData){
      <View style={styles.card}>
        <View style={styles.firstContainer}>
          <View style={styles.date}>
-         <Text style={{color:'#ff8c00'}}> {rowData.time_stamp} </Text>
+         <Text style={{color:'#ff8c00'}}> {rowData.date} </Text>
          </View>
          <View style={styles.time}>
          <Text style={{color:'#00bfff'}}>12:30 PM </Text>
@@ -166,7 +169,7 @@ renderFinished(rowData){
         </View>
         <View style={styles.tabcontainer}>
            <ScrollableTabView renderTabBar={() => <ScrollableTabBar />}>
-             <ScrollView tabLabel='Upcoming' style={styles.tabView} >
+           <ScrollView tabLabel='Upcoming' style={styles.tabView}>
                <View style={styles.scontainer}>
                  <ListView
                    ref="listView"
@@ -175,17 +178,17 @@ renderFinished(rowData){
                    renderSeparator={this.renderSeparator}
                  />
                </View>
-             </ScrollView>
-             <ScrollView tabLabel='Finished' style={styles.tabView}>
-                 <View style={styles.scontainer}>
-                   <ListView
-                     ref="listView"
-                     dataSource={this.state.dataSource}
-                     renderRow={this.renderFinished}
-                     renderSeparator={this.renderSeparator}
-                   />
-                 </View>
-             </ScrollView>
+           </ScrollView>
+           <ScrollView tabLabel='Finished' style={styles.tabView}>
+               <View style={styles.scontainer}>
+                 <ListView
+                   ref="listView"
+                   dataSource={this.state.dataSource}
+                   renderRow={this.renderFinished}
+                   renderSeparator={this.renderSeparator}
+                 />
+               </View>
+           </ScrollView>
            </ScrollableTabView>
         </View>
 
