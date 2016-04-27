@@ -26,10 +26,10 @@ var testData = 'https://raw.githubusercontent.com/sujithTSR/IPL_React_Native/mas
 
 var Matches= React.createClass ({
   getInitialState: function() {
-   var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-   return {
-    dataSource: ds.cloneWithRows(['row 1', 'row 2']),
-  };
+     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+     return {
+      dataSource: ds.cloneWithRows(['row 1', 'row 2']),
+    };
  },
  fetchData() {
     fetch(testData)
@@ -56,15 +56,22 @@ var Matches= React.createClass ({
      Place_Bet= "Bet Placed";
    }
  },
-renderUpcoming(rowData){
-  var date_elements = rowData.time_stamp.split("-");
-  if(date_elements[1] >= 1+Date_current.getMonth()){
-    if(date_elements[2] > Date_current.getDate()){
-      return(
-        <View>
-          {this.renderRow(rowData)}
-        </View>
-      );
+  renderUpcoming(rowData){
+    var date_elements = rowData.time_stamp.split("-");
+    if(date_elements[1] >= 1+Date_current.getMonth()){
+      if(date_elements[2] > Date_current.getDate()){
+        return(
+          <View>
+            {this.renderRow(rowData)}
+          </View>
+        );
+      }
+      else{
+        return (
+          <View>
+          </View>
+        );
+      }
     }
     else{
       return (
@@ -72,24 +79,26 @@ renderUpcoming(rowData){
         </View>
       );
     }
-  }
-  else{
-    return (
-      <View>
-      </View>
-    );
-  }
-},
+  },
 
 renderFinished(rowData){
-var date_elements = rowData.time_stamp.split("-");
-  if(date_elements[1]<= 1+Date_current.getMonth()){
-    if(date_elements[2]<Date_current.getDate()){
-      return(
-        <View>
-          {this.renderRow(rowData)}
-        </View>
-      );
+  var temp = rowData.time_stamp;
+
+  var date_elements = temp.split("-");
+    if(date_elements[1]<= 1+Date_current.getMonth()){
+      if(date_elements[2]<Date_current.getDate()){
+        return(
+          <View>
+            {this.renderRow(rowData)}
+          </View>
+        );
+      }
+      else{
+        return (
+          <View>
+          </View>
+        );
+      }
     }
     else{
       return (
@@ -97,14 +106,7 @@ var date_elements = rowData.time_stamp.split("-");
         </View>
       );
     }
-  }
-  else{
-    return (
-      <View>
-      </View>
-    );
-  }
-},
+  },
  renderRow(rowData) {
    return(
    <View style={styles.page}>
@@ -166,20 +168,28 @@ var date_elements = rowData.time_stamp.split("-");
         </View>
         <View style={styles.tabcontainer}>
            <ScrollableTabView renderTabBar={() => <ScrollableTabBar />}>
-
+             <ScrollView tabLabel='Upcoming' style={styles.tabView} >
+               <View style={styles.scontainer}>
+                 <ListView
+                   ref="listView"
+                   dataSource={this.state.dataSource}
+                   renderRow={this.renderUpcoming}
+                   renderSeparator={this.renderSeparator}
+                 />
+               </View>
+             </ScrollView>
              <ScrollView tabLabel='Finished' style={styles.tabView}>
                  <View style={styles.scontainer}>
                    <ListView
                      ref="listView"
                      dataSource={this.state.dataSource}
-                     renderRow={this.renderRow}
+                     renderRow={this.renderFinished}
                      renderSeparator={this.renderSeparator}
                    />
                  </View>
              </ScrollView>
            </ScrollableTabView>
         </View>
-
 
       </View>
     );
