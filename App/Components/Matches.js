@@ -57,7 +57,7 @@ var Matches= React.createClass ({
    }
  },
   renderUpcoming(rowData){
-    var date_elements = rowData.time_stamp.split("-");
+    var date_elements = rowData.time_stamp.split(" ");
     if(date_elements[1] >= 1+Date_current.getMonth()){
       if(date_elements[2] > Date_current.getDate()){
         return(
@@ -82,9 +82,7 @@ var Matches= React.createClass ({
   },
 
 renderFinished(rowData){
-  var temp = rowData.time_stamp;
-
-  var date_elements = temp.split("-");
+  var date_elements = rowData.time_stamp.split(" ");
     if(date_elements[1]<= 1+Date_current.getMonth()){
       if(date_elements[2]<Date_current.getDate()){
         return(
