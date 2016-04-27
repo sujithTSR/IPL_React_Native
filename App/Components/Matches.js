@@ -33,24 +33,24 @@ var testData = [
 var Matches= React.createClass ({
   getInitialState: function() {
    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-   sujith = {
-     isOpen: false,
-     selectedItem: 'About'
-   };
+
    return {
      dataSource: ds.cloneWithRows(testData),
    };
-  },
+ },
 
-  componentDidMount() {
+ componentDidMount() {
 
-  },
-
+ },
+ _navi(){
+   this.props.navigator.push({id: 3});
+ },
  _PlaceBet(){
    if(Place_Bet === "Bet Placed"){
      Place_Bet="Place Bet";
    }
    else if(Place_Bet === "Place Bet"){
+
      Place_Bet= "Bet Placed";
    }
  },
@@ -140,31 +140,28 @@ var date_elements = rowData.date.split(" ");
            </View>
        </View>
      </View>
-
    </View>
  );
  },
-
   render() {
-
     return (
-
       <View style={styles.contain}>
+        <View style={styles.prefirst}>
+            <TouchableHighlight onPress={this._navi} style={styles.navibutton}>
+              <Image
+                style={styles.naviimage}
+                source={require('./naviIcon.png')}
+              />
+            </TouchableHighlight>
+            <Text style={styles.maintext}>
+              Matches
+            </Text>
+        </View>
         <View style={styles.tabcontainer}>
-<<<<<<< HEAD
-<<<<<<< HEAD
            <ScrollableTabView renderTabBar={() => <ScrollableTabBar />}
-           tabBarBackgroundColor='#ffffff'
+
            >
              <ScrollView tabLabel='Upcoming' style={styles.tabView} >
-=======
-           <ScrollableTabView renderTabBar={() => <ScrollableTabBar />}>
-             <ScrollView tabLabel='Upcoming'>
->>>>>>> parent of 56186a6... Hardware back android final
-=======
-           <ScrollableTabView renderTabBar={() => <ScrollableTabBar />}>
-             <ScrollView tabLabel='Upcoming'>
->>>>>>> parent of 56186a6... Hardware back android final
                <View style={styles.scontainer}>
                  <ListView
                    ref="listView"
@@ -173,7 +170,7 @@ var date_elements = rowData.date.split(" ");
                  />
                </View>
              </ScrollView>
-             <ScrollView tabLabel='Finished'>
+             <ScrollView tabLabel='Finished' style={styles.tabView}>
                  <View style={styles.scontainer}>
                    <ListView
                      ref="listView"
@@ -184,9 +181,9 @@ var date_elements = rowData.date.split(" ");
              </ScrollView>
            </ScrollableTabView>
         </View>
+
+
       </View>
-
-
     );
   }
 });
@@ -201,6 +198,7 @@ const styles = StyleSheet.create({
   },
   scontainer:{
     flex: 0.96,
+    paddingBottom:5,
   },
   card: {
    backgroundColor: '#ffffff',
@@ -295,12 +293,39 @@ const styles = StyleSheet.create({
    borderRadius:10,
    marginRight:width/36,
    marginLeft:width/36,
+ },
+  prefirst:{
+    paddingTop:10,
+    paddingBottom:10,
+    flex: 0.04,
+    flexDirection:'row',
+    backgroundColor: '#d3d3d3',
   },
-
+  navibutton:{
+    flex:0.1,
+    paddingLeft:10,
+    width: 30,
+    height: height/18,
+  },
+  naviimage:{
+    width: 29,
+    height: 29,
+  },
+  maintext:{
+    flex: 0.9,
+    fontSize: 18,
+    textAlign: 'center',
+    fontWeight: 'bold'
+  },
   tabcontainer:{
     flex: 1,
-    backgroundColor:'#dcdcdc',
   },
+  tab:{
+    alignItems: 'center',
+  },
+  tabView: {
+    flex: 1,
+},
 
 });
 

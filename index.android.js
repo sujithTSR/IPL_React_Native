@@ -1,3 +1,5 @@
+
+
 'use strict';
 import React, {
   AppRegistry,
@@ -11,33 +13,29 @@ import React, {
   BackAndroid,
 } from 'react-native';
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 var _navigator;
-var Dashboard=require('./App/Navigation/NavigationDashboard');
-=======
->>>>>>> parent of 56186a6... Hardware back android final
-=======
->>>>>>> parent of 56186a6... Hardware back android final
 var Navipanel=require('./App/Navigation/Navipanel.js');
-
+var Dashboard= require('./App/Dashboard/dashboard.js');
 var Sample= require('./App/Navigation/sample.js');
-var Matches = require('./App/Navigation/NavigationMatches.js');
-var Users = require('./App/Navigation/NavigationUsers.js');
+var Matches = require('./App/Components/Matches.js');
+var Users = require('./App/Components/Users.js');
 
 var SCREEN_WIDTH =require('Dimensions').get('window').width;
 var BaseConfig = Navigator.SceneConfigs.FloatFromRight;
+
 var CustomLeftToRightGesture = Object.assign({}, BaseConfig.gestures.pop, {
   snapVelocity: 8,
   edgeHitWidth: SCREEN_WIDTH,
 });
+
 BackAndroid.addEventListener('hardwareBackPress', () => {
-if (_navigator.getCurrentRoutes().length === 1  ) {
-   return false;
-}
-_navigator.pop();
-return true;
+  if (_navigator.getCurrentRoutes().length === 1  ) {
+     return false;
+  }
+  _navigator.pop();
+  return true;
 });
+
 var CustomSceneConfig = Object.assign({}, BaseConfig, {
   // A very tighly wound spring will make this transition fast
   springTension: 100,
@@ -49,12 +47,9 @@ var CustomSceneConfig = Object.assign({}, BaseConfig, {
 });
 
 var test = React.createClass({
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of 56186a6... Hardware back android final
+
   _renderScene(route,navigator){
+    _navigator=navigator;
     if(route.id === 1){
       return <Dashboard navigator={navigator}/>;
     }
@@ -72,23 +67,15 @@ var test = React.createClass({
     }
 
   },
->>>>>>> parent of 56186a6... Hardware back android final
 
   _configureScene(route){
     return CustomSceneConfig;
   },
   render() {
     return (
-      <Navigator
-        initialRoute={{id: Dashboard}}
-        renderScene={(route, navigator)=>{
-          if(route.id){
-            return React.createElement(route.id, {navigator});
-          }
-        }}
-        configureScene={() => {
-          return Navigator.SceneConfigs.FadeAndroid;
-        }}
+      <Navigator initialRoute={{id:1}}
+        renderScene={this._renderScene}
+        configureScene={this._configureScene}
       />
     );
   }

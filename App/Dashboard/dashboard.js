@@ -1,12 +1,13 @@
 
 'use strict';
+var _ = require('lodash');
 var {height, width} = Dimensions.get('window');
 var height_box = 7*height/23;
 var width_box=  6*width/10;
 var height_line= 2*height/27;
 var width_line=  8*width/10;
-var Matches = require('./../Navigation/NavigationMatches.js');
 
+//var Nav = require('./../Navigation/Navibutton.js');
 
 import React, {
   AppRegistry,
@@ -17,20 +18,34 @@ import React, {
   Image,
   ListView,
   View,
-
   TouchableHighlight,
 } from 'react-native';
 
 var Dashboard = React.createClass({
-
+  _handlePress() {
+    this.props.navigator.push({id: 2});
+  },
+  _navi(){
+    this.props.navigator.push({id: 3});
+  },
   _gotoMatches(){
-    this.props.navigator.push({id: Matches});
+    this.props.navigator.push({ id: 4});
   },
 
   render() {
     return (
       <View style={styles.container}>
-
+        <View style={styles.prefirst}>
+              <TouchableHighlight onPress={this._navi} style={styles.navibutton}>
+                <Image
+                  style={styles.naviimage}
+                  source={require('./../../Icons/naviIcon.png')}
+                />
+              </TouchableHighlight>
+              <Text style={styles.maintext}>
+                Dashboard
+              </Text>
+        </View>
         <View style={styles.first}>
             <View style={styles.leftContainer}>
 

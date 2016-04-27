@@ -1,6 +1,3 @@
-
-import ScrollableTabView, { DefaultTabBar, ScrollableTabBar, } from 'react-native-scrollable-tab-view';
-
 import React, {
   AppRegistry,
   Component,
@@ -89,6 +86,18 @@ var Users= React.createClass ({
   render() {
     return (
       <View style={styles.contain}>
+        <View style={styles.prefirst}>
+            <TouchableHighlight onPress={this._navi} style={styles.navibutton}>
+              <Image
+                style={styles.naviimage}
+                source={require('./naviIcon.png')}
+              />
+            </TouchableHighlight>
+            <Text style={styles.maintext}>
+              Matches
+            </Text>
+        </View>
+
         <View style={styles.scontainer}>
           <ListView
             ref="listView"
