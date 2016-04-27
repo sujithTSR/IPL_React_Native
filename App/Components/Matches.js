@@ -20,7 +20,7 @@ var Date_current = new Date();
 
 var {height, width} = Dimensions.get('window');
 var ch=height/3;
-var testData = 'https://drive.google.com/file/d/0BwYLEVl6yNprSEVJVVg4OC10eGM/view?usp=sharing' ;
+var testData = 'https://raw.githubusercontent.com/sujithTSR/IPL_React_Native/master/matches.json' ;
 
 
 
@@ -166,7 +166,7 @@ var date_elements = rowData.time_stamp.split("-");
         </View>
         <View style={styles.tabcontainer}>
            <ScrollableTabView renderTabBar={() => <ScrollableTabBar />}>
-             
+
              <ScrollView tabLabel='Finished' style={styles.tabView}>
                  <View style={styles.scontainer}>
                    <ListView
