@@ -152,10 +152,15 @@ var date_elements = rowData.date.split(" ");
       <View style={styles.contain}>
         <View style={styles.tabcontainer}>
 <<<<<<< HEAD
+<<<<<<< HEAD
            <ScrollableTabView renderTabBar={() => <ScrollableTabBar />}
            tabBarBackgroundColor='#ffffff'
            >
              <ScrollView tabLabel='Upcoming' style={styles.tabView} >
+=======
+           <ScrollableTabView renderTabBar={() => <ScrollableTabBar />}>
+             <ScrollView tabLabel='Upcoming'>
+>>>>>>> parent of 56186a6... Hardware back android final
 =======
            <ScrollableTabView renderTabBar={() => <ScrollableTabBar />}>
              <ScrollView tabLabel='Upcoming'>

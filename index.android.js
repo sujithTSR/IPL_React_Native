@@ -12,8 +12,11 @@ import React, {
 } from 'react-native';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 var _navigator;
 var Dashboard=require('./App/Navigation/NavigationDashboard');
+=======
+>>>>>>> parent of 56186a6... Hardware back android final
 =======
 >>>>>>> parent of 56186a6... Hardware back android final
 var Navipanel=require('./App/Navigation/Navipanel.js');
@@ -47,7 +50,10 @@ var CustomSceneConfig = Object.assign({}, BaseConfig, {
 
 var test = React.createClass({
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 56186a6... Hardware back android final
   _renderScene(route,navigator){
     if(route.id === 1){
       return <Dashboard navigator={navigator}/>;
