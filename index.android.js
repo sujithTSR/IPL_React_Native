@@ -11,8 +11,11 @@ import React, {
   BackAndroid,
 } from 'react-native';
 
+<<<<<<< HEAD
 var _navigator;
 var Dashboard=require('./App/Navigation/NavigationDashboard');
+=======
+>>>>>>> parent of 56186a6... Hardware back android final
 var Navipanel=require('./App/Navigation/Navipanel.js');
 
 var Sample= require('./App/Navigation/sample.js');
@@ -21,20 +24,17 @@ var Users = require('./App/Navigation/NavigationUsers.js');
 
 var SCREEN_WIDTH =require('Dimensions').get('window').width;
 var BaseConfig = Navigator.SceneConfigs.FloatFromRight;
-
 var CustomLeftToRightGesture = Object.assign({}, BaseConfig.gestures.pop, {
   snapVelocity: 8,
   edgeHitWidth: SCREEN_WIDTH,
 });
-
 BackAndroid.addEventListener('hardwareBackPress', () => {
-  if (_navigator.getCurrentRoutes().length === 1  ) {
-     return false;
-  }
-  _navigator.pop();
-  return true;
+if (_navigator.getCurrentRoutes().length === 1  ) {
+   return false;
+}
+_navigator.pop();
+return true;
 });
-
 var CustomSceneConfig = Object.assign({}, BaseConfig, {
   // A very tighly wound spring will make this transition fast
   springTension: 100,
@@ -46,6 +46,27 @@ var CustomSceneConfig = Object.assign({}, BaseConfig, {
 });
 
 var test = React.createClass({
+<<<<<<< HEAD
+=======
+  _renderScene(route,navigator){
+    if(route.id === 1){
+      return <Dashboard navigator={navigator}/>;
+    }
+    else if(route.id === 2){
+      return <Sample navigator={navigator} /> ;
+    }
+    else if(route.id === 3){
+      return <Navipanel navigator={navigator} /> ;
+    }
+    else if(route.id === 4){
+      return <Matches navigator={navigator} /> ;
+    }
+    else if(route.id === 5){
+      return <Users navigator={navigator} />
+    }
+
+  },
+>>>>>>> parent of 56186a6... Hardware back android final
 
   _configureScene(route){
     return CustomSceneConfig;

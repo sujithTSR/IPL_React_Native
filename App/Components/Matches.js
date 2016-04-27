@@ -140,6 +140,7 @@ var date_elements = rowData.date.split(" ");
            </View>
        </View>
      </View>
+
    </View>
  );
  },
@@ -150,10 +151,15 @@ var date_elements = rowData.date.split(" ");
 
       <View style={styles.contain}>
         <View style={styles.tabcontainer}>
+<<<<<<< HEAD
            <ScrollableTabView renderTabBar={() => <ScrollableTabBar />}
            tabBarBackgroundColor='#ffffff'
            >
              <ScrollView tabLabel='Upcoming' style={styles.tabView} >
+=======
+           <ScrollableTabView renderTabBar={() => <ScrollableTabBar />}>
+             <ScrollView tabLabel='Upcoming'>
+>>>>>>> parent of 56186a6... Hardware back android final
                <View style={styles.scontainer}>
                  <ListView
                    ref="listView"
@@ -162,7 +168,7 @@ var date_elements = rowData.date.split(" ");
                  />
                </View>
              </ScrollView>
-             <ScrollView tabLabel='Finished' style={styles.tabView}>
+             <ScrollView tabLabel='Finished'>
                  <View style={styles.scontainer}>
                    <ListView
                      ref="listView"
@@ -190,7 +196,6 @@ const styles = StyleSheet.create({
   },
   scontainer:{
     flex: 0.96,
-    paddingBottom:5,
   },
   card: {
    backgroundColor: '#ffffff',
@@ -291,12 +296,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor:'#dcdcdc',
   },
-  tab:{
-    alignItems: 'center',
-  },
-  tabView: {
-    flex: 1,
-},
 
 });
 
